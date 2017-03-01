@@ -29,6 +29,7 @@
 //======自定义一些=======
 #import "HSManager.h"//自定义一些管理工具
 #import "UIView+ZKBView.h"//view分类（frame设置）
+#import "UIBarButtonItem+HSExtension.h"//UIBarButtonItem分类
 #import "Api_Header.h"//接口
 
 // 1DEBUG模式,控制输出

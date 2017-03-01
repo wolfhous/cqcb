@@ -20,7 +20,7 @@
     //设置背景
 //    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar_background"] forBarMetrics:UIBarMetricsDefault];
     //添加导航栏切换转场动画
-//    self.jz_navigationBarTransitionStyle = JZNavigationBarTransitionStyleDoppelganger;
+    self.jz_navigationBarTransitionStyle = JZNavigationBarTransitionStyleDoppelganger;
     //添加侧滑返回功能
     self.jz_fullScreenInteractivePopGestureEnabled = YES;
 }

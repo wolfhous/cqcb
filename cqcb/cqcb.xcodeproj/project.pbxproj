@@ -42,6 +42,8 @@
 		9D41E8CF1E66A02100C0D8B1 /* SYRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E8CE1E66A02100C0D8B1 /* SYRefreshFooter.m */; };
 		9D41E8D31E66A81100C0D8B1 /* SYUserSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E8D21E66A81100C0D8B1 /* SYUserSingleton.m */; };
 		9D41E8D61E66A84A00C0D8B1 /* SYAppSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E8D51E66A84A00C0D8B1 /* SYAppSingleton.m */; };
+		9D41E8D91E66B80600C0D8B1 /* SYSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E8D81E66B80600C0D8B1 /* SYSearchVC.m */; };
+		9D41E8DC1E66BD1E00C0D8B1 /* SYNewsTitleBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E8DB1E66BD1E00C0D8B1 /* SYNewsTitleBtn.m */; };
 		C3312F67222ED4DD06B823AB /* libPods-cqcb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9540326791C182174AE6CE /* libPods-cqcb.a */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +122,10 @@
 		9D41E8D21E66A81100C0D8B1 /* SYUserSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYUserSingleton.m; sourceTree = "<group>"; };
 		9D41E8D41E66A84A00C0D8B1 /* SYAppSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYAppSingleton.h; sourceTree = "<group>"; };
 		9D41E8D51E66A84A00C0D8B1 /* SYAppSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYAppSingleton.m; sourceTree = "<group>"; };
+		9D41E8D71E66B80600C0D8B1 /* SYSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSearchVC.h; sourceTree = "<group>"; };
+		9D41E8D81E66B80600C0D8B1 /* SYSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYSearchVC.m; sourceTree = "<group>"; };
+		9D41E8DA1E66BD1E00C0D8B1 /* SYNewsTitleBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewsTitleBtn.h; sourceTree = "<group>"; };
+		9D41E8DB1E66BD1E00C0D8B1 /* SYNewsTitleBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsTitleBtn.m; sourceTree = "<group>"; };
 		A7ADAEB3866EC9205FFEFD7B /* Pods-cqcb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cqcb.release.xcconfig"; path = "Pods/Target Support Files/Pods-cqcb/Pods-cqcb.release.xcconfig"; sourceTree = "<group>"; };
 		D261A0EF6EACB7872134CB2B /* Pods-cqcb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cqcb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cqcb/Pods-cqcb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -328,6 +334,8 @@
 			children = (
 				9D41E88E1E666D4400C0D8B1 /* SYNewsVC.h */,
 				9D41E88F1E666D4400C0D8B1 /* SYNewsVC.m */,
+				9D41E8D71E66B80600C0D8B1 /* SYSearchVC.h */,
+				9D41E8D81E66B80600C0D8B1 /* SYSearchVC.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -342,6 +350,8 @@
 		9D41E8681E666CBD00C0D8B1 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				9D41E8DA1E66BD1E00C0D8B1 /* SYNewsTitleBtn.h */,
+				9D41E8DB1E66BD1E00C0D8B1 /* SYNewsTitleBtn.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -629,8 +639,10 @@
 				9D41E8A71E669F4000C0D8B1 /* Foundation+Log.m in Sources */,
 				9D41E8891E666D1A00C0D8B1 /* NSNumber+JZExtension.m in Sources */,
 				9D41E8651E666B3F00C0D8B1 /* SYTabBarController.m in Sources */,
+				9D41E8D91E66B80600C0D8B1 /* SYSearchVC.m in Sources */,
 				9D41E8881E666D1A00C0D8B1 /* _JZValue.m in Sources */,
 				9D41E8BF1E669F8800C0D8B1 /* UIBarButtonItem+HSExtension.m in Sources */,
+				9D41E8DC1E66BD1E00C0D8B1 /* SYNewsTitleBtn.m in Sources */,
 				9D41E8901E666D4400C0D8B1 /* SYNewsVC.m in Sources */,
 				9D41E8C51E669F8800C0D8B1 /* UITextField+HSTextField.m in Sources */,
 				9D41E88B1E666D1A00C0D8B1 /* UIToolbar+JZExtension.m in Sources */,
