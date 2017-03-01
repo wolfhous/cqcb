@@ -13,10 +13,15 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        [self setTitleColor:HSMainColor forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor darkTextColor] forState:UIControlStateSelected];
+        [self setTitleColor:HSMainColor forState:UIControlStateSelected];
+        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+        
+        
     }
     return self;
 }
+
+
 
 @end

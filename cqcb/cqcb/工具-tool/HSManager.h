@@ -43,4 +43,11 @@
  */
 +(NSString *)hs_getMd5Str:(NSString *)str;
 
+/**
+ 获取时间戳
+
+ @return 返回时间戳字符串
+ */
++(NSString *)hs_getTimeStamp;
+
 @end

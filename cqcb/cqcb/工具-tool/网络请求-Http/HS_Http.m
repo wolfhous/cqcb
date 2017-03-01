@@ -74,7 +74,7 @@
     if (parameters == nil) {
         parameters = [NSMutableDictionary dictionary];
     }
-    
+    parameters[@"timer"] = [HSManager hs_getTimeStamp];
     
     DLog(@"\n【请求接口】\n%@\n【请求参数】\n%@",apiName,parameters);
     
@@ -83,7 +83,10 @@
     //2设置超时时间
     manager.requestSerializer.timeoutInterval = 5;
     //添加一个返回格式解析
-    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObjectsFromArray:@[@"text/html",@"application/javascript"]];
+    
+    
     //2.1顶栏状态转圈图形
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 
@@ -97,7 +100,7 @@
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];//顶栏状态转圈图形
             
             //判断返回状态码
-            [[self alloc]judgeCode:responseObject];
+//            [[self alloc]judgeCode:responseObject];
             //请求成功返回数据
             success(responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		879B4D4B1E670232005950FC /* SYNewsTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 879B4D4A1E670232005950FC /* SYNewsTypeModel.m */; };
+		879B4D4E1E671CF2005950FC /* SYNewsBasicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 879B4D4D1E671CF2005950FC /* SYNewsBasicVC.m */; };
+		879B4D511E672058005950FC /* SYNewsAdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 879B4D501E672058005950FC /* SYNewsAdModel.m */; };
+		879B4D541E67212A005950FC /* SYNewsSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 879B4D531E67212A005950FC /* SYNewsSingleModel.m */; };
 		9D41E83E1E66656000C0D8B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E83D1E66656000C0D8B1 /* main.m */; };
 		9D41E8411E66656000C0D8B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E8401E66656000C0D8B1 /* AppDelegate.m */; };
 		9D41E8491E66656100C0D8B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D41E8481E66656100C0D8B1 /* Assets.xcassets */; };
@@ -49,6 +53,14 @@
 
 /* Begin PBXFileReference section */
 		7D9540326791C182174AE6CE /* libPods-cqcb.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cqcb.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		879B4D491E670232005950FC /* SYNewsTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewsTypeModel.h; sourceTree = "<group>"; };
+		879B4D4A1E670232005950FC /* SYNewsTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsTypeModel.m; sourceTree = "<group>"; };
+		879B4D4C1E671CF2005950FC /* SYNewsBasicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewsBasicVC.h; sourceTree = "<group>"; };
+		879B4D4D1E671CF2005950FC /* SYNewsBasicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsBasicVC.m; sourceTree = "<group>"; };
+		879B4D4F1E672058005950FC /* SYNewsAdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewsAdModel.h; sourceTree = "<group>"; };
+		879B4D501E672058005950FC /* SYNewsAdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsAdModel.m; sourceTree = "<group>"; };
+		879B4D521E67212A005950FC /* SYNewsSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewsSingleModel.h; sourceTree = "<group>"; };
+		879B4D531E67212A005950FC /* SYNewsSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsSingleModel.m; sourceTree = "<group>"; };
 		9D41E8391E66656000C0D8B1 /* cqcb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cqcb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D41E83D1E66656000C0D8B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9D41E83F1E66656000C0D8B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -336,6 +348,8 @@
 				9D41E88F1E666D4400C0D8B1 /* SYNewsVC.m */,
 				9D41E8D71E66B80600C0D8B1 /* SYSearchVC.h */,
 				9D41E8D81E66B80600C0D8B1 /* SYSearchVC.m */,
+				879B4D4C1E671CF2005950FC /* SYNewsBasicVC.h */,
+				879B4D4D1E671CF2005950FC /* SYNewsBasicVC.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -343,6 +357,12 @@
 		9D41E8671E666CBD00C0D8B1 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				879B4D491E670232005950FC /* SYNewsTypeModel.h */,
+				879B4D4A1E670232005950FC /* SYNewsTypeModel.m */,
+				879B4D4F1E672058005950FC /* SYNewsAdModel.h */,
+				879B4D501E672058005950FC /* SYNewsAdModel.m */,
+				879B4D521E67212A005950FC /* SYNewsSingleModel.h */,
+				879B4D531E67212A005950FC /* SYNewsSingleModel.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -634,6 +654,7 @@
 				9D41E8871E666D1A00C0D8B1 /* _JZNavigationInteractiveTransition.m in Sources */,
 				9D41E8C01E669F8800C0D8B1 /* UIButton+HSButton.m in Sources */,
 				9D41E8D31E66A81100C0D8B1 /* SYUserSingleton.m in Sources */,
+				879B4D511E672058005950FC /* SYNewsAdModel.m in Sources */,
 				9D41E8621E666B0F00C0D8B1 /* SYNavigationController.m in Sources */,
 				9D41E8CF1E66A02100C0D8B1 /* SYRefreshFooter.m in Sources */,
 				9D41E8A71E669F4000C0D8B1 /* Foundation+Log.m in Sources */,
@@ -646,6 +667,7 @@
 				9D41E8901E666D4400C0D8B1 /* SYNewsVC.m in Sources */,
 				9D41E8C51E669F8800C0D8B1 /* UITextField+HSTextField.m in Sources */,
 				9D41E88B1E666D1A00C0D8B1 /* UIToolbar+JZExtension.m in Sources */,
+				879B4D541E67212A005950FC /* SYNewsSingleModel.m in Sources */,
 				9D41E8D61E66A84A00C0D8B1 /* SYAppSingleton.m in Sources */,
 				9D41E8C31E669F8800C0D8B1 /* UILabel+HSLabel.m in Sources */,
 				9D41E89C1E669D3D00C0D8B1 /* SYMeVC.m in Sources */,
@@ -654,7 +676,9 @@
 				9D41E8C21E669F8800C0D8B1 /* UIImageView+HSRound.m in Sources */,
 				9D41E88D1E666D1A00C0D8B1 /* UIViewController+JZExtension.m in Sources */,
 				9D41E88A1E666D1A00C0D8B1 /* UINavigationBar+JZExtension.m in Sources */,
+				879B4D4E1E671CF2005950FC /* SYNewsBasicVC.m in Sources */,
 				9D41E8A81E669F4000C0D8B1 /* Reachability.m in Sources */,
+				879B4D4B1E670232005950FC /* SYNewsTypeModel.m in Sources */,
 				9D41E88C1E666D1A00C0D8B1 /* UINavigationController+JZExtension.m in Sources */,
 				9D41E8C11E669F8800C0D8B1 /* UIImage+Image.m in Sources */,
 				9D41E8CC1E669FFA00C0D8B1 /* SYRefreshGifHeader.m in Sources */,

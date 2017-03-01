@@ -9,6 +9,8 @@
 #import "SYNewsVC.h"
 #import "SYSearchVC.h"//搜索
 #import "SYNewsTitleBtn.h"//滚动标题按钮
+#import "SYNewsTypeModel.h"// 新闻分类模型
+#import "SYNewsBasicVC.h"
 @interface SYNewsVC ()<UIScrollViewDelegate>
 //标题滚动视图
 @property (nonatomic,strong)UIScrollView *titleScrollView;
@@ -17,17 +19,26 @@
 //主滚动视图
 @property (nonatomic,strong)UIScrollView *scrollView;
 
+/**新闻分类数组 */
+@property (nonatomic,strong)NSMutableArray<SYNewsTypeModel *> *arrayNewsTypes;
+
+
 @end
 
 @implementation SYNewsVC
-
+-(NSMutableArray<SYNewsTypeModel *> *)arrayNewsTypes{
+    if (!_arrayNewsTypes) {
+        _arrayNewsTypes = [NSMutableArray array];
+    }
+    return _arrayNewsTypes;
+}
 -(UIScrollView *)titleScrollView{
     if (!_titleScrollView) {
         _titleScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH - 44, 44)];
         _titleScrollView.showsHorizontalScrollIndicator = NO;
         _titleScrollView.showsVerticalScrollIndicator = NO;
         _titleScrollView.bounces = NO;
-        _titleScrollView.backgroundColor = HSRandomColor;
+        _titleScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.view addSubview:_titleScrollView];
         
     }
@@ -50,14 +61,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     /***  设置导航栏相关 ****/
     [self setupNewsVCNavBar];
-    /***  设置新闻分类栏目 ****/
-    [self setupSYXWCatogaryTitleScrollView];
-    /***  设置基础滚动视图 ****/
-    [self setupBasicScrollView];
-    /***  添加子控制器 ****/
-    [self addChildVcInScrollView];
+    
+    /***  加载分类数据 ****/
+    [self loadNewsCategoryData];
     
 }
 
@@ -85,17 +95,69 @@
     [self.navigationController pushViewController:searchVC animated:YES];
 }
 
--(void)setupSYXWCatogaryTitleScrollView{
-    self.titleScrollView.hidden = NO;
+
+-(void)loadNewsCategoryData{
+    
+    [HS_Http hs_postAPIName:api_newsTypes parameters:nil succes:^(id responseObject) {
+        
+        self.arrayNewsTypes = [SYNewsTypeModel mj_objectArrayWithKeyValuesArray:responseObject];
+        /***  设置新闻分类栏目 ****/
+        [self setupSYXWCatogaryTitleScrollView];
+        /***  设置基础滚动视图 ****/
+        [self setupBasicScrollView];
+        /***  添加子控制器 ****/
+        [self addChildVcInScrollView];
+        
+    } error:^(id error) {
+        
+    }];
+  
 }
 
+
+-(void)setupSYXWCatogaryTitleScrollView{
+    //指示器高度
+    CGFloat indicateViewHeight = 0;
+    //标题按钮
+    CGFloat h = self.titleScrollView.xmg_height - indicateViewHeight;
+    SYNewsTitleBtn *lastBtn;
+    for (NSInteger i = 0; i < self.arrayNewsTypes.count; i++) {
+        SYNewsTitleBtn *btn = [SYNewsTitleBtn buttonWithType:UIButtonTypeCustom];
+        btn.tag = i;
+        [btn setTitle:self.arrayNewsTypes[i].classname forState:UIControlStateNormal];
+        [btn sizeToFit];
+        btn.xmg_x = lastBtn.xmg_right + 10;
+        btn.xmg_y = 0;
+        btn.xmg_height = h;
+        [btn addTarget:self action:@selector(clickTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.titleScrollView addSubview:btn];
+        lastBtn = btn;
+    }
+    self.titleScrollView.contentSize = CGSizeMake(lastBtn.xmg_right + 5, self.titleScrollView.xmg_height);
+    //首个选中按钮
+    self.selectBtn = self.titleScrollView.subviews.firstObject;
+    self.selectBtn.selected = YES;
+    [self.selectBtn.titleLabel sizeToFit];
+}
+//点击导航标题
+-(void)clickTitleBtn:(SYNewsTitleBtn *)btn{
+    DLogFunc
+    self.selectBtn.selected = NO;
+    self.selectBtn = btn;
+    self.selectBtn.selected = YES;
+    // 让UIScrollView滚动到对应位置
+    CGPoint point = self.scrollView.contentOffset;
+    point.x = btn.tag * self.scrollView.xmg_width;
+    [self.scrollView setContentOffset:point animated:YES];
+}
 -(void)setupBasicScrollView{
-    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * 10, self.scrollView.xmg_height);
+    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * self.arrayNewsTypes.count, self.scrollView.xmg_height);
     self.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     //添加子控制器
-    for (NSInteger i = 0; i < 10; i ++) {
+    for (NSInteger i = 0; i < self.arrayNewsTypes.count; i ++) {
         //切勿在此设置vc的view图层，只能新建。否则会调用vc的ViewLoaded，浪费性能
-        UIViewController *vc = [UIViewController new];
+        SYNewsBasicVC *vc = [SYNewsBasicVC new];
+        vc.model = self.arrayNewsTypes[i];
         [self addChildViewController:vc];
     }
 }
@@ -128,9 +190,8 @@
 {
     // 选中\点击对应的按钮
     NSUInteger index = scrollView.contentOffset.x / scrollView.xmg_width;
-//    CQSBHomeTitleBtn *titleButton = self.titleScrollView.subviews[index];
-//    [self clickTitleBtn:titleButton];
-    
+    SYNewsTitleBtn *titleButton = self.titleScrollView.subviews[index];
+    [self clickTitleBtn:titleButton];
     // 添加子控制器的view
     [self addChildVcInScrollView];
     
