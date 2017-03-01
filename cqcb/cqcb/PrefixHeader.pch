@@ -1,0 +1,75 @@
+//
+//  PrefixHeader.pch
+//  cqcb
+//
+//  Created by 壹号商圈 on 17/3/1.
+//  Copyright © 2017年 com.houshuai. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***/
+
+
+/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/
+#ifdef __OBJC__
+
+
+//======原生三方库=======
+#import "MJExtension.h"//模型解析
+#import "Masonry.h"//自动布局
+#import "UIImageView+WebCache.h"//图片缓存
+#import "JZNavigationExtension.h"//三方库 导航栏渐变效果
+#import "MBProgressHUD.h"//提示进度条
+//======三方库 封装=======
+#import "HS_Http.h"//封装网络请求
+#import "SYRefreshGifHeader.h"//自定义下拉刷新
+#import "SYRefreshFooter.h"//自定义上拉刷新
+//======自定义一些=======
+#import "HSManager.h"//自定义一些管理工具
+#import "UIView+ZKBView.h"//view分类（frame设置）
+#import "Api_Header.h"//接口
+
+// 1DEBUG模式,控制输出
+#ifdef DEBUG
+# define DLog(fmt, ...) NSLog((@"[函数名:%s]" "[行号:%d]" fmt),__FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+# define DLog(...);
+#endif
+#define DLogFunc DLog(@"%s", __func__);
+
+#define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
+
+
+//防止block块循环引用用weakSelf
+#define WKSELF __unsafe_unretained typeof(self) weakSelf = self
+//创建可变字典，主要用于POST请求数据
+#define HSParameters NSMutableDictionary *parameters = [NSMutableDictionary dictionary]
+
+
+//=========颜色==============
+//基础配色
+#define HSColorA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
+#define HSColor(r, g, b) HSColorA((r), (g), (b), 255)
+//随机色
+#define HSRandomColor HSColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+//主色调
+#define HSMainColor HSColor(212,14,24)
+//文字颜色
+#define HSTextColor HSColor(61, 61, 61)
+//分割线颜色
+#define HSLineColor HSColor(229, 229, 229)
+//=========颜色==============
+
+
+
+
+
+
+
+
+
+#endif
+#endif /* PrefixHeader_pch */
