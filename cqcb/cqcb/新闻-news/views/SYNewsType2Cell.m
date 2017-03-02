@@ -7,7 +7,7 @@
 //
 
 #import "SYNewsType2Cell.h"
-
+#import "UILabel+HSLabel.h"
 
 
 @interface SYNewsType2Cell()
@@ -63,6 +63,7 @@
     [super awakeFromNib];
     self.titleLabel.preferredMaxLayoutWidth = SCREEN_WIDTH - 30;
     self.imageViewLeftHeight.constant = (SCREEN_WIDTH - 40)/3 * 3/4;
+    [self.readNumLabel hs_setRoundRadius:4];
 }
 -(void)setModel:(SYNewsSingleModel *)model{
     _model = model;

@@ -166,7 +166,6 @@
     if ([childVC isViewLoaded]) {
         return;
     }
-    childVC.view.backgroundColor = HSRandomColor;
     childVC.view.frame = self.scrollView.bounds;
     [self.scrollView addSubview:childVC.view];
 }

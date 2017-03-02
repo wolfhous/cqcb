@@ -52,14 +52,8 @@
     
     self.rightImageViewWidth.constant = (SCREEN_WIDTH - 40)/3;
     self.rightImageViewHeight.constant = (SCREEN_WIDTH - 40)/3 * 3/4;
-    [self.redeNumLabel hs_setRoundRadius:3];
+    [self.redeNumLabel hs_setRoundRadius:4];
     
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 

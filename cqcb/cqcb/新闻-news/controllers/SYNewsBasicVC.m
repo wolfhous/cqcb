@@ -12,8 +12,9 @@
 
 #import "SYNewsType1Cell.h"//右侧图片cell
 #import "SYNewsType2Cell.h"//三张图片类型cell
-#import "SYNewsType3Cell.h"//cell
-#import "SYNewsType4Cell.h"//cell
+#import "SYNewsType3Cell.h"//大图类型新闻
+#import "SYNewsType4Cell.h"//文字类型新闻
+#import "SYNewsType5Cell.h"//大图类型新闻 + 评论和阅读
 
 #import "SYNewsDetailWebVC.h"//新闻详情--网页类型
 @interface SYNewsBasicVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -32,7 +33,8 @@
  */
 @property (nonatomic, strong)NSMutableArray<SYNewsAdModel *> *arrayAD;
 
-
+/** 网络圈圈*/
+@property (nonatomic,strong)UIActivityIndicatorView *activityIndicatorView;
 @end
 
 @implementation SYNewsBasicVC
@@ -41,6 +43,7 @@ static NSString *type1cellID = @"newSingleType1Cell";
 static NSString *type2cellID = @"newSingleType2Cell";
 static NSString *type3cellID = @"newSingleType3Cell";
 static NSString *type4cellID = @"newSingleType4Cell";
+static NSString *type5cellID = @"newSingleType5Cell";
 
 #pragma mark - [懒加载]==========
 -(UITableView *)tabeleView{
@@ -55,6 +58,7 @@ static NSString *type4cellID = @"newSingleType4Cell";
         [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType2Cell" bundle:nil] forCellReuseIdentifier:type2cellID];
         [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType3Cell" bundle:nil] forCellReuseIdentifier:type3cellID];
         [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType4Cell" bundle:nil] forCellReuseIdentifier:type4cellID];
+        [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType5Cell" bundle:nil] forCellReuseIdentifier:type5cellID];
         [self.view addSubview:_tabeleView];
     }
     return _tabeleView;
@@ -73,12 +77,29 @@ static NSString *type4cellID = @"newSingleType4Cell";
     }
     return _arrayAD;
 }
+-(UIActivityIndicatorView *)activityIndicatorView{
+    if (!_activityIndicatorView) {
+        CGFloat w = 100;
+        _activityIndicatorView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-w)/2, (SCREEN_HEIGHT-w - 64 - 44)/2, w, w)];
+        _activityIndicatorView.color = HSMainColor;
+        [self.view addSubview:_activityIndicatorView];
+    }
+    return _activityIndicatorView;
+}
+
+
+
 #pragma mark - [viewDidLoad]==========
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //开始转圈
+    [self.activityIndicatorView startAnimating];
     //开始加载数据
     [self loadFirstData];
 }
+
+
+
 #pragma mark - <UITableViewDataSource>========
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.arrayNews.count;
@@ -86,10 +107,17 @@ static NSString *type4cellID = @"newSingleType4Cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (self.arrayNews[indexPath.row].showtype == cellTypeRightImage ) {//右侧一张图片
-        SYNewsType1Cell *cell = [tableView dequeueReusableCellWithIdentifier:type1cellID];
-        cell.model = self.arrayNews[indexPath.row];
-        return cell;
+    if (self.arrayNews[indexPath.row].showtype == cellTypeRightImage ) {//右侧有一张图片 或者 没有图片
+        if (self.arrayNews[indexPath.row].smalltitlepic.length > 1) {//假如有图片，就显示图片
+            
+            SYNewsType1Cell *cell = [tableView dequeueReusableCellWithIdentifier:type1cellID];
+            cell.model = self.arrayNews[indexPath.row];
+            return cell;
+        }else{//假如没有图片 就只显示文字
+            SYNewsType4Cell *cell = [tableView dequeueReusableCellWithIdentifier:type4cellID];
+            cell.model = self.arrayNews[indexPath.row];
+            return cell;
+        }
     }else if (self.arrayNews[indexPath.row].showtype == cellTypeThreeImage){//三张图片类型新闻
         SYNewsType2Cell *cell = [tableView dequeueReusableCellWithIdentifier:type2cellID];
         cell.model = self.arrayNews[indexPath.row];
@@ -98,7 +126,13 @@ static NSString *type4cellID = @"newSingleType4Cell";
         SYNewsType3Cell *cell = [tableView dequeueReusableCellWithIdentifier:type3cellID];
         cell.model = self.arrayNews[indexPath.row];
         return cell;
-    }else{
+    }else if (self.arrayNews[indexPath.row].showtype == cellTypeBigImageAndRed){//大图类型新闻 + 阅读评论
+        SYNewsType5Cell *cell = [tableView dequeueReusableCellWithIdentifier:type5cellID];
+        cell.model = self.arrayNews[indexPath.row];
+        return cell;
+    }
+    
+    else{
         DLog(@"未知类型新闻====%ld",self.arrayNews[indexPath.row].showtype);
         SYNewsType1Cell *cell = [tableView dequeueReusableCellWithIdentifier:type1cellID];
         cell.model = self.arrayNews[indexPath.row];
@@ -129,19 +163,27 @@ static NSString *type4cellID = @"newSingleType4Cell";
 
 #pragma mark - <加载数据>========
 -(void)loadFirstData{
+    
+    //新闻列表数据
     [HS_Http hs_postAPIName:api_newsList(self.model.classpath) parameters:nil succes:^(id responseObject) {
         DLog(@"%@",responseObject);
         self.arrayNews = [SYNewsSingleModel mj_objectArrayWithKeyValuesArray:responseObject[@"newslist"]];
-        [self.tabeleView reloadData];
-    } error:^(id error) {
         
+        //结束转圈
+        [self.activityIndicatorView stopAnimating];
+        self.activityIndicatorView.hidden = YES;
+        [self.tabeleView reloadData];
+        
+    } error:^(id error) {
+        //结束转圈
+        [self.activityIndicatorView stopAnimating];
+        self.activityIndicatorView.hidden = YES;
     }];
     
-    
+    //新闻广告数据
     [HS_Http hs_postAPIName:api_newsAD(self.model.classid) parameters:nil succes:^(id responseObject) {
         DLog(@"%@",responseObject);
         self.arrayAD = [SYNewsAdModel mj_objectArrayWithKeyValuesArray:responseObject[@"newslist"]];
-//        [self.tabeleView reloadData];
     } error:^(id error) {
         
     }];

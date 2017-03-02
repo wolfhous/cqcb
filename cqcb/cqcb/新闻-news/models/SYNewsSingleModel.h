@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 typedef NS_ENUM(NSInteger,cellType) {
-    /** 右侧图片类型新闻*/
+    /** 右侧图片类型新闻  或者 没有图片  具体有无图片根据模型的imgnum来判断*/
     cellTypeRightImage = 0,
     /** 三张图片类型新闻*/
     cellTypeThreeImage = 1,
     /** 大图类型新闻*/
     cellTypeBigImage = 3,
+    /** 大图类型新闻 + 评论和阅读*/
+    cellTypeBigImageAndRed = 2,
+    
     
 };
 @interface SYNewsSingleModel : NSObject

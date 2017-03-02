@@ -60,6 +60,8 @@
 		9D671AD71E67F0FA009FB2E1 /* NSString+XMGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D671AD41E67F0FA009FB2E1 /* NSString+XMGExtension.m */; };
 		9D671AD81E67F0FA009FB2E1 /* NSDate+XMGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D671AD61E67F0FA009FB2E1 /* NSDate+XMGExtension.m */; };
 		9D671ADC1E67FF64009FB2E1 /* SYNewsDetailWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D671ADA1E67FF64009FB2E1 /* SYNewsDetailWebVC.m */; };
+		9D671AE11E680C8C009FB2E1 /* SYNewsType5Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D671ADF1E680C8C009FB2E1 /* SYNewsType5Cell.m */; };
+		9D671AE21E680C8C009FB2E1 /* SYNewsType5Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D671AE01E680C8C009FB2E1 /* SYNewsType5Cell.xib */; };
 		C3312F67222ED4DD06B823AB /* libPods-cqcb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9540326791C182174AE6CE /* libPods-cqcb.a */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +172,9 @@
 		9D671AD61E67F0FA009FB2E1 /* NSDate+XMGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+XMGExtension.m"; sourceTree = "<group>"; };
 		9D671AD91E67FF64009FB2E1 /* SYNewsDetailWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewsDetailWebVC.h; sourceTree = "<group>"; };
 		9D671ADA1E67FF64009FB2E1 /* SYNewsDetailWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsDetailWebVC.m; sourceTree = "<group>"; };
+		9D671ADE1E680C8C009FB2E1 /* SYNewsType5Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewsType5Cell.h; sourceTree = "<group>"; };
+		9D671ADF1E680C8C009FB2E1 /* SYNewsType5Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsType5Cell.m; sourceTree = "<group>"; };
+		9D671AE01E680C8C009FB2E1 /* SYNewsType5Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYNewsType5Cell.xib; sourceTree = "<group>"; };
 		A7ADAEB3866EC9205FFEFD7B /* Pods-cqcb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cqcb.release.xcconfig"; path = "Pods/Target Support Files/Pods-cqcb/Pods-cqcb.release.xcconfig"; sourceTree = "<group>"; };
 		D261A0EF6EACB7872134CB2B /* Pods-cqcb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cqcb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cqcb/Pods-cqcb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -424,6 +429,9 @@
 				9D671ACA1E67E8FC009FB2E1 /* SYNewsType4Cell.h */,
 				9D671ACB1E67E8FC009FB2E1 /* SYNewsType4Cell.m */,
 				9D671ACC1E67E8FC009FB2E1 /* SYNewsType4Cell.xib */,
+				9D671ADE1E680C8C009FB2E1 /* SYNewsType5Cell.h */,
+				9D671ADF1E680C8C009FB2E1 /* SYNewsType5Cell.m */,
+				9D671AE01E680C8C009FB2E1 /* SYNewsType5Cell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -639,6 +647,7 @@
 				9D671AC41E67E8E6009FB2E1 /* SYNewsType2Cell.xib in Resources */,
 				9D671ABF1E67C1EE009FB2E1 /* SYNewsType1Cell.xib in Resources */,
 				9D41E8491E66656100C0D8B1 /* Assets.xcassets in Resources */,
+				9D671AE21E680C8C009FB2E1 /* SYNewsType5Cell.xib in Resources */,
 				9D671AC91E67E8F2009FB2E1 /* SYNewsType3Cell.xib in Resources */,
 				9D671ACE1E67E8FC009FB2E1 /* SYNewsType4Cell.xib in Resources */,
 			);
@@ -711,6 +720,7 @@
 				9D671AD21E67F09A009FB2E1 /* NSCalendar+XMGExtension.m in Sources */,
 				9D41E8C91E669FB400C0D8B1 /* HS_Http.m in Sources */,
 				9D41E83E1E66656000C0D8B1 /* main.m in Sources */,
+				9D671AE11E680C8C009FB2E1 /* SYNewsType5Cell.m in Sources */,
 				9D41E8871E666D1A00C0D8B1 /* _JZNavigationInteractiveTransition.m in Sources */,
 				9D41E8C01E669F8800C0D8B1 /* UIButton+HSButton.m in Sources */,
 				9D41E8D31E66A81100C0D8B1 /* SYUserSingleton.m in Sources */,

@@ -26,7 +26,7 @@
 #pragma mark - 懒加载
 -(UIActivityIndicatorView *)activityIndicatorView{
     if (!_activityIndicatorView) {
-        CGFloat w = 70;
+        CGFloat w = 100;
         _activityIndicatorView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-w)/2, (SCREEN_HEIGHT-w)/2, w, w)];
         _activityIndicatorView.color = HSMainColor;
         [self.view addSubview:_activityIndicatorView];
@@ -44,6 +44,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
     self.jz_navigationBarTintColor = [UIColor groupTableViewBackgroundColor];
     self.navigationItem.title = @"上游新闻";
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem hs_itemWithImage:@"btn_more_function_gray_22x22_" highImage:@"btn_more_function_gray_22x22_" target:self action:@selector(cliclNewsDetailWebRightItem)];
@@ -66,6 +67,7 @@
     //结束转圈
     [self.activityIndicatorView stopAnimating];
     self.activityIndicatorView.hidden = YES;
+    
 }
 
 
