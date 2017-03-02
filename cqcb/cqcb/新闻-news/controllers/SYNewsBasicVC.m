@@ -33,6 +33,11 @@
  */
 @property (nonatomic, strong)NSMutableArray<SYNewsAdModel *> *arrayAD;
 
+/**
+ 当前数据页码
+ */
+@property (nonatomic, assign)NSInteger pageIndex;
+
 /** 网络圈圈*/
 @property (nonatomic,strong)UIActivityIndicatorView *activityIndicatorView;
 @end
@@ -54,6 +59,8 @@ static NSString *type5cellID = @"newSingleType5Cell";
         _tabeleView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         _tabeleView.tableFooterView = [UIView new];
         _tabeleView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
+        _tabeleView.mj_header = [SYRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadFirstData)];
+        _tabeleView.mj_footer = [SYRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
         [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType1Cell" bundle:nil] forCellReuseIdentifier:type1cellID];
         [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType2Cell" bundle:nil] forCellReuseIdentifier:type2cellID];
         [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType3Cell" bundle:nil] forCellReuseIdentifier:type3cellID];
@@ -77,6 +84,12 @@ static NSString *type5cellID = @"newSingleType5Cell";
     }
     return _arrayAD;
 }
+-(NSInteger)pageIndex{
+    if (!_pageIndex) {
+        _pageIndex = 1;
+    }
+    return _pageIndex;
+}
 -(UIActivityIndicatorView *)activityIndicatorView{
     if (!_activityIndicatorView) {
         CGFloat w = 100;
@@ -95,10 +108,17 @@ static NSString *type5cellID = @"newSingleType5Cell";
     //开始转圈
     [self.activityIndicatorView startAnimating];
     //开始加载数据
-    [self loadFirstData];
+    [self loadData];
 }
-
-
+-(void)loadFirstData{
+    self.pageIndex = 1;
+    [self loadData];
+}
+-(void)loadMoreData{
+    self.pageIndex ++;
+    [self loadData];
+    
+}
 
 #pragma mark - <UITableViewDataSource>========
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -162,23 +182,37 @@ static NSString *type5cellID = @"newSingleType5Cell";
 }
 
 #pragma mark - <加载数据>========
--(void)loadFirstData{
+-(void)loadData{
+    
     
     //新闻列表数据
-    [HS_Http hs_postAPIName:api_newsList(self.model.classpath) parameters:nil succes:^(id responseObject) {
-        DLog(@"%@",responseObject);
-        self.arrayNews = [SYNewsSingleModel mj_objectArrayWithKeyValuesArray:responseObject[@"newslist"]];
+    [HS_Http hs_postAPIName:api_newsList(self.model.classpath,self.pageIndex) parameters:nil succes:^(id responseObject) {
+        
+        NSArray *array = [SYNewsSingleModel mj_objectArrayWithKeyValuesArray:responseObject[@"newslist"]];
+        
+        if (self.pageIndex == 1) {
+            self.arrayNews = [NSMutableArray arrayWithArray:array];
+        }else{
+            [self.arrayNews addObjectsFromArray:array];
+        }
+        
         
         //结束转圈
         [self.activityIndicatorView stopAnimating];
         self.activityIndicatorView.hidden = YES;
         [self.tabeleView reloadData];
+        [self.tabeleView.mj_footer endRefreshing];
+        [self.tabeleView.mj_header endRefreshing];
         
     } error:^(id error) {
         //结束转圈
         [self.activityIndicatorView stopAnimating];
         self.activityIndicatorView.hidden = YES;
+        
+        [self.tabeleView.mj_footer endRefreshing];
+        [self.tabeleView.mj_header endRefreshing];
     }];
+    
     
     //新闻广告数据
     [HS_Http hs_postAPIName:api_newsAD(self.model.classid) parameters:nil succes:^(id responseObject) {

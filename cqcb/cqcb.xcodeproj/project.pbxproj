@@ -11,6 +11,7 @@
 		879B4D4E1E671CF2005950FC /* SYNewsBasicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 879B4D4D1E671CF2005950FC /* SYNewsBasicVC.m */; };
 		879B4D511E672058005950FC /* SYNewsAdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 879B4D501E672058005950FC /* SYNewsAdModel.m */; };
 		879B4D541E67212A005950FC /* SYNewsSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 879B4D531E67212A005950FC /* SYNewsSingleModel.m */; };
+		87D979021E68710300FAC889 /* SYVRSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D979011E68710300FAC889 /* SYVRSingleModel.m */; };
 		9D41E83E1E66656000C0D8B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E83D1E66656000C0D8B1 /* main.m */; };
 		9D41E8411E66656000C0D8B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E8401E66656000C0D8B1 /* AppDelegate.m */; };
 		9D41E8491E66656100C0D8B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D41E8481E66656100C0D8B1 /* Assets.xcassets */; };
@@ -75,6 +76,8 @@
 		879B4D501E672058005950FC /* SYNewsAdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsAdModel.m; sourceTree = "<group>"; };
 		879B4D521E67212A005950FC /* SYNewsSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewsSingleModel.h; sourceTree = "<group>"; };
 		879B4D531E67212A005950FC /* SYNewsSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsSingleModel.m; sourceTree = "<group>"; };
+		87D979001E68710300FAC889 /* SYVRSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYVRSingleModel.h; sourceTree = "<group>"; };
+		87D979011E68710300FAC889 /* SYVRSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYVRSingleModel.m; sourceTree = "<group>"; };
 		9D41E8391E66656000C0D8B1 /* cqcb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cqcb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D41E83D1E66656000C0D8B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9D41E83F1E66656000C0D8B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -494,6 +497,8 @@
 		9D41E8701E666CDB00C0D8B1 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				87D979001E68710300FAC889 /* SYVRSingleModel.h */,
+				87D979011E68710300FAC889 /* SYVRSingleModel.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -742,6 +747,7 @@
 				879B4D541E67212A005950FC /* SYNewsSingleModel.m in Sources */,
 				9D41E8D61E66A84A00C0D8B1 /* SYAppSingleton.m in Sources */,
 				9D41E8C31E669F8800C0D8B1 /* UILabel+HSLabel.m in Sources */,
+				87D979021E68710300FAC889 /* SYVRSingleModel.m in Sources */,
 				9D41E89C1E669D3D00C0D8B1 /* SYMeVC.m in Sources */,
 				9D41E8AB1E669F6500C0D8B1 /* HSManager.m in Sources */,
 				9D41E8961E669D0B00C0D8B1 /* SYDialogueVC.m in Sources */,
