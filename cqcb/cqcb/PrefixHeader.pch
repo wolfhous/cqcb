@@ -32,6 +32,10 @@
 #import "UIBarButtonItem+HSExtension.h"//UIBarButtonItem分类
 #import "Api_Header.h"//接口
 
+#import "NSCalendar+XMGExtension.h"//xmg
+#import "NSString+XMGExtension.h"
+#import "NSDate+XMGExtension.h"
+
 // 1DEBUG模式,控制输出
 #ifdef DEBUG
 # define DLog(fmt, ...) NSLog((@"[函数名:%s]" "[行号:%d]" fmt),__FUNCTION__, __LINE__, ##__VA_ARGS__);
@@ -66,7 +70,7 @@
 
 
 
-
+#define HS_placeholderImageName @"img_loading_default_gray_100x70_"
 
 
 

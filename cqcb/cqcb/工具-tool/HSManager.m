@@ -193,5 +193,10 @@ static CGRect originalFrame;
     }
     return md5String;
 }
-
++(NSString *)hs_getCorrectURL:(NSString *)url{
+    if (![url hasPrefix:@"http"]) {
+        url = [NSString stringWithFormat:@"http://www.cqcb.com%@",url];
+    }
+    return url;
+}
 @end

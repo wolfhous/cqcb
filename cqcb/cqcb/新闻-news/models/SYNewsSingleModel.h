@@ -7,13 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-
+typedef NS_ENUM(NSInteger,cellType) {
+    /** 右侧图片类型新闻*/
+    cellTypeRightImage = 0,
+    /** 三张图片类型新闻*/
+    cellTypeThreeImage = 1,
+    /** 大图类型新闻*/
+    cellTypeBigImage = 3,
+    
+};
 @interface SYNewsSingleModel : NSObject
 
 /** <#Description#>*/
 @property (nonatomic,copy)NSString *isSYN;
 /** 0:右侧一张图片  1:3张图片   3:一张大图*/
-@property (nonatomic,copy)NSString *showtype;
+@property (nonatomic,assign)cellType showtype;
 /** <#Description#>*/
 @property (nonatomic,copy)NSString *istop;
 /** 时间*/
@@ -27,11 +35,12 @@
 /** <#Description#>*/
 @property (nonatomic,copy)NSString *sptime;
 
-/** 图片*/
-@property (nonatomic,copy)NSString *titlepic;//第二张
-/** 小图*/
+
+/** 第1张 （小图）*/
 @property (nonatomic,copy)NSString *smalltitlepic;//第一张
-/** 小图3*/
+/** 第2张（大图）*/
+@property (nonatomic,copy)NSString *titlepic;//第二张
+/** 第3张（小图）*/
 @property (nonatomic,copy)NSString *smalltitlepic3;//第三张
 
 /** <#Description#>*/
@@ -63,6 +72,9 @@
 /** <#Description#>*/
 @property (nonatomic,copy)NSString *expertname;
 
+//===========自定义添加数据==============
 
+/** cell 的高度*/
+@property (nonatomic,assign)CGFloat cellHeight;
 
 @end

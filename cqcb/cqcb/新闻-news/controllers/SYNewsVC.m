@@ -26,6 +26,7 @@
 @end
 
 @implementation SYNewsVC
+#pragma mark - [懒加载] 懒加载====================
 -(NSMutableArray<SYNewsTypeModel *> *)arrayNewsTypes{
     if (!_arrayNewsTypes) {
         _arrayNewsTypes = [NSMutableArray array];
@@ -57,18 +58,14 @@
     }
     return _scrollView;
 }
-
+#pragma mark - [viewDidLoad]====================
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
     /***  设置导航栏相关 ****/
     [self setupNewsVCNavBar];
-    
     /***  加载分类数据 ****/
     [self loadNewsCategoryData];
-    
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -80,7 +77,7 @@
     [super viewDidAppear:animated];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
-#pragma mark - [初始化] 设置导航栏相关
+#pragma mark - [初始化] 设置导航栏相关====================
 -(void)setupNewsVCNavBar{
     self.view.backgroundColor = HSRandomColor;
     self.jz_wantsNavigationBarVisible = true;
@@ -89,13 +86,13 @@
     self.navigationItem.title = @"上游新闻";
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem hs_itemWithImage:@"btn_search_white_22x22_" highImage:@"btn_search_white_22x22_" target:self action:@selector(clickNewsVCLeftItem)];
 }
-#pragma mark - [事件] 点击左侧leftItem
+#pragma mark  [事件] 点击左侧leftItem
 -(void)clickNewsVCLeftItem{
     SYSearchVC *searchVC = [[SYSearchVC alloc]init];
     [self.navigationController pushViewController:searchVC animated:YES];
 }
 
-
+#pragma mark - [加载数据] 加载分类数据====================
 -(void)loadNewsCategoryData{
     
     [HS_Http hs_postAPIName:api_newsTypes parameters:nil succes:^(id responseObject) {
@@ -114,7 +111,7 @@
   
 }
 
-
+#pragma mark [设置新闻分类栏目]
 -(void)setupSYXWCatogaryTitleScrollView{
     //指示器高度
     CGFloat indicateViewHeight = 0;
@@ -139,9 +136,9 @@
     self.selectBtn.selected = YES;
     [self.selectBtn.titleLabel sizeToFit];
 }
-//点击导航标题
+#pragma mark [事件]点击导航标题
 -(void)clickTitleBtn:(SYNewsTitleBtn *)btn{
-    DLogFunc
+    DLog(@"%@",btn.currentTitle);
     self.selectBtn.selected = NO;
     self.selectBtn = btn;
     self.selectBtn.selected = YES;
@@ -150,6 +147,7 @@
     point.x = btn.tag * self.scrollView.xmg_width;
     [self.scrollView setContentOffset:point animated:YES];
 }
+#pragma mark [设置基础滚动视图]
 -(void)setupBasicScrollView{
     self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH * self.arrayNewsTypes.count, self.scrollView.xmg_height);
     self.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -161,7 +159,7 @@
         [self addChildViewController:vc];
     }
 }
-
+#pragma mark [添加子控制器]
 - (void)addChildVcInScrollView{
     NSUInteger index = self.scrollView.contentOffset.x/self.scrollView.xmg_width;
     UIViewController *childVC = self.childViewControllers[index];
@@ -172,7 +170,10 @@
     childVC.view.frame = self.scrollView.bounds;
     [self.scrollView addSubview:childVC.view];
 }
-#pragma mark - <UIScrollViewDelegate>
+
+
+
+#pragma mark - <UIScrollViewDelegate> =============
 /**
  * 在scrollView滚动动画结束时, 就会调用这个方法
  * 前提: 使用setContentOffset:animated:或者scrollRectVisible:animated:方法让scrollView产生滚动动画
@@ -188,12 +189,17 @@
  */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    // 选中\点击对应的按钮
+    // 选中点击对应的按钮
     NSUInteger index = scrollView.contentOffset.x / scrollView.xmg_width;
     SYNewsTitleBtn *titleButton = self.titleScrollView.subviews[index];
     [self clickTitleBtn:titleButton];
     // 添加子控制器的view
     [self addChildVcInScrollView];
-    
 }
+
+
+
+
+
+
 @end

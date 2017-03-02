@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SYNavigationController : UINavigationController
-
+-(void)back;
 @end

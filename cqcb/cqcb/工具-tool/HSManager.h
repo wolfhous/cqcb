@@ -50,4 +50,15 @@
  */
 +(NSString *)hs_getTimeStamp;
 
+
+
+/**
+ 获取一个正确的url
+
+ @param url 传入需要判断/拼接的url
+ @return 返回一个正确的url
+ */
++(NSString *)hs_getCorrectURL:(NSString *)url;
+
+
 @end
