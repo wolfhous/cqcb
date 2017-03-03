@@ -95,6 +95,15 @@
 #pragma mark - [加载数据] 加载分类数据====================
 -(void)loadNewsCategoryData{
     
+    
+    
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, (SCREEN_HEIGHT - 30)/2, SCREEN_WIDTH, 30)];
+    [btn setTitle:@"网络连接失败，点击再来一次吧" forState:0];
+    [btn setTitleColor:HSMainColor forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(loadNewsCategoryData) forControlEvents:UIControlEventTouchUpInside];
+    btn.hidden = YES;
+    [self.view addSubview:btn];
+    
     [HS_Http hs_postAPIName:api_newsTypes parameters:nil succes:^(id responseObject) {
         
         self.arrayNewsTypes = [SYNewsTypeModel mj_objectArrayWithKeyValuesArray:responseObject];
@@ -105,8 +114,11 @@
         /***  添加子控制器 ****/
         [self addChildVcInScrollView];
         
-    } error:^(id error) {
+        btn.hidden = YES;
+        [btn removeFromSuperview];
         
+    } error:^(id error) {
+        btn.hidden = NO;
     }];
   
 }

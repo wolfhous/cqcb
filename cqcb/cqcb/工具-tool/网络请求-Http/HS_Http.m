@@ -66,6 +66,21 @@
     //检测网络
     if (![HSManager hs_isExistenceNetwork]) {
         DLog(@"没有连接网络");
+
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+        // Set the custom view mode to show any view.
+        hud.mode = MBProgressHUDModeCustomView;
+        // Set an image view with a checkmark.
+        UIImage *image = [[UIImage imageNamed:@"hs_error"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        hud.customView = [[UIImageView alloc] initWithImage:image];
+        // Looks a bit nicer if we make it square.
+        hud.square = YES;
+        // Optional label text.
+//        hud.labelText = NSLocalizedString(@"网络连接失败", @"HUD done title");
+        hud.labelText = @"网络连接失败";
+        hud.removeFromSuperViewOnHide = YES;
+        [hud hide:YES afterDelay:2.f];
+        
     }
     
     
