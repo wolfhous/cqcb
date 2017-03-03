@@ -62,6 +62,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     /***  设置导航栏相关 ****/
     [self setupNewsVCNavBar];
     /***  加载分类数据 ****/

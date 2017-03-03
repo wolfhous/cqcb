@@ -20,6 +20,7 @@
 		9D0AB6D41E691EB600F1E597 /* SYActivitiesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0AB6D21E691EB600F1E597 /* SYActivitiesCell.m */; };
 		9D0AB6D51E691EB600F1E597 /* SYActivitiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0AB6D31E691EB600F1E597 /* SYActivitiesCell.xib */; };
 		9D0AB6D81E691EC900F1E597 /* SYActivitiesSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0AB6D71E691EC900F1E597 /* SYActivitiesSingleModel.m */; };
+		9D0AB6DA1E69500A00F1E597 /* xgt.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9D0AB6D91E69500A00F1E597 /* xgt.gif */; };
 		9D41E83E1E66656000C0D8B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E83D1E66656000C0D8B1 /* main.m */; };
 		9D41E8411E66656000C0D8B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E8401E66656000C0D8B1 /* AppDelegate.m */; };
 		9D41E8491E66656100C0D8B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D41E8481E66656100C0D8B1 /* Assets.xcassets */; };
@@ -99,6 +100,7 @@
 		9D0AB6D31E691EB600F1E597 /* SYActivitiesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYActivitiesCell.xib; sourceTree = "<group>"; };
 		9D0AB6D61E691EC900F1E597 /* SYActivitiesSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYActivitiesSingleModel.h; sourceTree = "<group>"; };
 		9D0AB6D71E691EC900F1E597 /* SYActivitiesSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYActivitiesSingleModel.m; sourceTree = "<group>"; };
+		9D0AB6D91E69500A00F1E597 /* xgt.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = xgt.gif; sourceTree = "<group>"; };
 		9D41E8391E66656000C0D8B1 /* cqcb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cqcb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D41E83D1E66656000C0D8B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9D41E83F1E66656000C0D8B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		9D41E83B1E66656000C0D8B1 /* cqcb */ = {
 			isa = PBXGroup;
 			children = (
+				9D0AB6D91E69500A00F1E597 /* xgt.gif */,
 				9D41E85C1E66697800C0D8B1 /* 新闻-news */,
 				9D41E85A1E66697800C0D8B1 /* 视觉-vr */,
 				9D41E8541E66697800C0D8B1 /* 对话-dialogue */,
@@ -688,6 +691,7 @@
 				9D671ABF1E67C1EE009FB2E1 /* SYNewsType1Cell.xib in Resources */,
 				9D41E8491E66656100C0D8B1 /* Assets.xcassets in Resources */,
 				9D671AE21E680C8C009FB2E1 /* SYNewsType5Cell.xib in Resources */,
+				9D0AB6DA1E69500A00F1E597 /* xgt.gif in Resources */,
 				9D671AC91E67E8F2009FB2E1 /* SYNewsType3Cell.xib in Resources */,
 				9D0AB6CD1E69132F00F1E597 /* SYDialogueCell.xib in Resources */,
 				9D0AB6D51E691EB600F1E597 /* SYActivitiesCell.xib in Resources */,
