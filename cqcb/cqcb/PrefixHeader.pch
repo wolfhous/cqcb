@@ -36,6 +36,10 @@
 #import "NSString+XMGExtension.h"
 #import "NSDate+XMGExtension.h"
 
+
+#import "SYAppSingleton.h"
+#import "SYUserSingleton.h"
+
 // 1DEBUG模式,控制输出
 #ifdef DEBUG
 # define DLog(fmt, ...) NSLog((@"[函数名:%s]" "[行号:%d]" fmt),__FUNCTION__, __LINE__, ##__VA_ARGS__);

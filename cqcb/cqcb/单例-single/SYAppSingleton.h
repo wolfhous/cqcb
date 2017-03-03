@@ -11,4 +11,10 @@
 @interface SYAppSingleton : NSObject
 singleton_interface(SYAppSingleton)
 
+
+/**
+ 当前版本号
+ */
+@property (nonatomic,strong)NSString *currentVersion;
+
 @end

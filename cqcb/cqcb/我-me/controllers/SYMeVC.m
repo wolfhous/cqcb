@@ -10,11 +10,6 @@
 #import "UIBarButtonItem+HSExtension.h"
 #define headerViewH 100
 
-
-
-
-
-
 @interface SYMeVC ()<UITableViewDelegate,UITableViewDataSource>
 /**
  主表视图
@@ -53,7 +48,6 @@
 -(UIView *)headerView{
     if (!_headerView) {
         _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, headerViewH)];
-        _headerView.backgroundColor = [UIColor purpleColor];
         
         
         UIImageView *imageView = [[UIImageView alloc]init];
@@ -79,7 +73,7 @@
         NSMutableDictionary *dic10 = [NSMutableDictionary dictionaryWithDictionary:@{@"title":@"个性设置",@"imageName":@"img_usercenter_setup_20x20_"}];
         NSMutableDictionary *dic11 = [NSMutableDictionary dictionaryWithDictionary:@{@"title":@"清除缓存",@"imageName":@"img_usercenter_clear_20x20_"}];
         NSMutableDictionary *dic12 = [NSMutableDictionary dictionaryWithDictionary:@{@"title":@"关于上游",@"imageName":@"img_usercenter_aboutus_20x20_"}];
-        NSMutableDictionary *dic13 = [NSMutableDictionary dictionaryWithDictionary:@{@"title":@"当前版本",@"imageName":@"img_usercenter_update_20x20_"}];
+        NSMutableDictionary *dic13 = [NSMutableDictionary dictionaryWithDictionary:@{@"title":[NSString stringWithFormat:@"当前版本 %@",[SYAppSingleton sharedSYAppSingleton].currentVersion],@"imageName":@"img_usercenter_update_20x20_"}];
         
         [_arrayTitles addObjectsFromArray:@[@[dic00,dic01],@[dic10,dic11,dic12,dic13]]];
         
@@ -89,12 +83,9 @@
 
 
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = HSRandomColor;
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.jz_navigationBarBackgroundAlpha = 0;
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem hs_itemWithImage:@"btn_scanCode_20x20_" highImage:@"btn_scanCode_20x20_" target:self action:@selector(clickMeVcRightItem)];
     //添加表视图
