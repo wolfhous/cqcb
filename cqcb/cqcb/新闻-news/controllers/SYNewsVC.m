@@ -79,7 +79,6 @@
 }
 #pragma mark - [初始化] 设置导航栏相关====================
 -(void)setupNewsVCNavBar{
-    self.view.backgroundColor = HSRandomColor;
     self.jz_wantsNavigationBarVisible = true;
     self.jz_navigationBarBackgroundAlpha = 1.f;
     self.jz_navigationBarTintColor = HSMainColor;
@@ -135,6 +134,17 @@
     self.selectBtn = self.titleScrollView.subviews.firstObject;
     self.selectBtn.selected = YES;
     [self.selectBtn.titleLabel sizeToFit];
+    
+    //设置右侧加号
+    
+    UIButton *addBtn = [UIButton buttonWithType:0];
+    [addBtn setBackgroundImage:[UIImage imageNamed:@"btn_add_gray_33x26_"] forState:0];
+    [self.view addSubview:addBtn];
+    [addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(0);
+        make.top.bottom.mas_equalTo(self.titleScrollView);
+        make.left.mas_equalTo(self.titleScrollView.mas_right).mas_equalTo(-20);
+    }];
 }
 #pragma mark [事件]点击导航标题
 -(void)clickTitleBtn:(SYNewsTitleBtn *)btn{

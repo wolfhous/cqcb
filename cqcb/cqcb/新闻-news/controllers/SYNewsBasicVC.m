@@ -163,7 +163,7 @@ static NSString *type5cellID = @"newSingleType5Cell";
 
 #pragma mark 预估高度
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return 120;
 }
 
 #pragma mark 实际高度 （实际高度实现重点 1赋值模型数据就开始强制布局 2在awakeFromNib实现cell里面label的preferredMaxLayoutWidth最大宽度）
@@ -171,7 +171,7 @@ static NSString *type5cellID = @"newSingleType5Cell";
     if (self.arrayNews[indexPath.row].cellHeight) {
         return self.arrayNews[indexPath.row].cellHeight;
     }else{
-        return 100;
+        return 120;
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

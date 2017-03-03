@@ -20,7 +20,7 @@
     if (!_searchBar) {
         _searchBar = [[UISearchBar alloc]init];
         _searchBar.delegate = self;
-        _searchBar.placeholder = @"github/wolfhous/cqtimes";
+        _searchBar.placeholder = @"github/wolfhous/cqcb";
     }
     return _searchBar;
 }
