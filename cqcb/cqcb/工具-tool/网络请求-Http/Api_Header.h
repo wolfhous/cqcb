@@ -28,7 +28,6 @@
 
 
 //==========VR==========
-
 #define api_vrList(pageindex) pageindex < 2?@"https://www.cqcb.com/vision/vr/index.json" : [NSString stringWithFormat:@"https://www.cqcb.com/vision/vr/index_%ld.json",pageindex]
 
 

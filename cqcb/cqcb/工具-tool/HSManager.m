@@ -153,8 +153,9 @@ static CGRect originalFrame;
     [pan setTranslation:CGPointZero inView:backgroundView];
     oldframe = imageView.frame;
 }
-+(NSString *)hs_getTimeForDataStr:(NSString *)str{
-    NSTimeInterval time=[str doubleValue];//+28800;//因为时差问题要加8小时 == 28800 sec
+//时间戳转 --> 时间字符串
++(NSString *)hs_getTimeStrForTimeStampStr:(NSString *)stampStr withFormate:(NSString *)formate{
+    NSTimeInterval time=[stampStr doubleValue];//+28800;//因为时差问题要加8小时 == 28800 sec
     
     NSDate *detaildate=[NSDate dateWithTimeIntervalSince1970:time];
     
@@ -166,12 +167,28 @@ static CGRect originalFrame;
     
     //设定时间格式,这里可以设置成自己需要的格式
     
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
-    
+    if (formate == nil) {
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    }else{
+        [dateFormatter setDateFormat:formate];
+    }
     
     NSString *currentDateStr = [dateFormatter stringFromDate: detaildate];
     return currentDateStr;
+}
+//时间字符串 --> 时间戳
++(NSString *)hs_getTimeStampForTimeStr:(NSString *)timeStr withFormate:(NSString *)formate{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    if (formate == nil) {
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    }else{
+        [dateFormatter setDateFormat:formate];
+    }
+    
+    NSDate *date = [dateFormatter dateFromString:timeStr];
+    NSInteger timeSp = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];
+    return [NSString stringWithFormat:@"%ld",timeSp];
 }
 
 +(NSString *)hs_getTimeStamp{

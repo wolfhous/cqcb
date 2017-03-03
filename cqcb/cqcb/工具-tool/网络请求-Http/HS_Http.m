@@ -80,6 +80,8 @@
     
     //1创建AFHTTPSessionManager 请求管理集
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    //取消所有其他请求
+    [manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     //2设置超时时间
     manager.requestSerializer.timeoutInterval = 5;
     //添加一个返回格式解析

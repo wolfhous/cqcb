@@ -44,4 +44,20 @@
 @property (nonatomic,copy)NSString *writer;
 /** <#Description#>*/
 @property (nonatomic,copy)NSString *titleurl;
+
+
+
+
+//===========自定义添加数据==============
+
+/** cell 的高度*/
+@property (nonatomic,assign)CGFloat cellHeight;
+
+
+
+
+
+
+
+
 @end

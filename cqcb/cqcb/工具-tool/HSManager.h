@@ -26,13 +26,26 @@
 + (void)hs_showBigImage:(UIImageView *)selectedImageView;
 
 /**
- *  时间戳转时间字符串
+ *  时间戳转 --> 时间字符串
  *
- *  @param str 传入的时间戳
+ *  @param stampStr 传入的时间戳
  *
  *  @return 返回的时间字符串
  */
-+(NSString *)hs_getTimeForDataStr:(NSString *)str;
++(NSString *)hs_getTimeStrForTimeStampStr:(NSString *)stampStr withFormate:(NSString *)formate;
+
+
+/**
+ 时间字符串 -->时间戳转
+
+ @param timeStr 传入的时间字符串
+ @return 返回时间戳
+ */
++(NSString *)hs_getTimeStampForTimeStr:(NSString *)timeStr withFormate:(NSString *)formate;
+
+
+
+
 
 /**
  *  MD5加密

@@ -12,6 +12,14 @@
 		879B4D511E672058005950FC /* SYNewsAdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 879B4D501E672058005950FC /* SYNewsAdModel.m */; };
 		879B4D541E67212A005950FC /* SYNewsSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 879B4D531E67212A005950FC /* SYNewsSingleModel.m */; };
 		87D979021E68710300FAC889 /* SYVRSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D979011E68710300FAC889 /* SYVRSingleModel.m */; };
+		9D0AB6C41E68FE7700F1E597 /* SYVRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0AB6C21E68FE7700F1E597 /* SYVRCell.m */; };
+		9D0AB6C51E68FE7700F1E597 /* SYVRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0AB6C31E68FE7700F1E597 /* SYVRCell.xib */; };
+		9D0AB6C81E69131F00F1E597 /* SYDialogueSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0AB6C71E69131F00F1E597 /* SYDialogueSingleModel.m */; };
+		9D0AB6CC1E69132F00F1E597 /* SYDialogueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0AB6CA1E69132F00F1E597 /* SYDialogueCell.m */; };
+		9D0AB6CD1E69132F00F1E597 /* SYDialogueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0AB6CB1E69132F00F1E597 /* SYDialogueCell.xib */; };
+		9D0AB6D41E691EB600F1E597 /* SYActivitiesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0AB6D21E691EB600F1E597 /* SYActivitiesCell.m */; };
+		9D0AB6D51E691EB600F1E597 /* SYActivitiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0AB6D31E691EB600F1E597 /* SYActivitiesCell.xib */; };
+		9D0AB6D81E691EC900F1E597 /* SYActivitiesSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0AB6D71E691EC900F1E597 /* SYActivitiesSingleModel.m */; };
 		9D41E83E1E66656000C0D8B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E83D1E66656000C0D8B1 /* main.m */; };
 		9D41E8411E66656000C0D8B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D41E8401E66656000C0D8B1 /* AppDelegate.m */; };
 		9D41E8491E66656100C0D8B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D41E8481E66656100C0D8B1 /* Assets.xcassets */; };
@@ -78,6 +86,19 @@
 		879B4D531E67212A005950FC /* SYNewsSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsSingleModel.m; sourceTree = "<group>"; };
 		87D979001E68710300FAC889 /* SYVRSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYVRSingleModel.h; sourceTree = "<group>"; };
 		87D979011E68710300FAC889 /* SYVRSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYVRSingleModel.m; sourceTree = "<group>"; };
+		9D0AB6C11E68FE7700F1E597 /* SYVRCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYVRCell.h; sourceTree = "<group>"; };
+		9D0AB6C21E68FE7700F1E597 /* SYVRCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYVRCell.m; sourceTree = "<group>"; };
+		9D0AB6C31E68FE7700F1E597 /* SYVRCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYVRCell.xib; sourceTree = "<group>"; };
+		9D0AB6C61E69131F00F1E597 /* SYDialogueSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDialogueSingleModel.h; sourceTree = "<group>"; };
+		9D0AB6C71E69131F00F1E597 /* SYDialogueSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDialogueSingleModel.m; sourceTree = "<group>"; };
+		9D0AB6C91E69132F00F1E597 /* SYDialogueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDialogueCell.h; sourceTree = "<group>"; };
+		9D0AB6CA1E69132F00F1E597 /* SYDialogueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDialogueCell.m; sourceTree = "<group>"; };
+		9D0AB6CB1E69132F00F1E597 /* SYDialogueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYDialogueCell.xib; sourceTree = "<group>"; };
+		9D0AB6D11E691EB600F1E597 /* SYActivitiesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYActivitiesCell.h; sourceTree = "<group>"; };
+		9D0AB6D21E691EB600F1E597 /* SYActivitiesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYActivitiesCell.m; sourceTree = "<group>"; };
+		9D0AB6D31E691EB600F1E597 /* SYActivitiesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYActivitiesCell.xib; sourceTree = "<group>"; };
+		9D0AB6D61E691EC900F1E597 /* SYActivitiesSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYActivitiesSingleModel.h; sourceTree = "<group>"; };
+		9D0AB6D71E691EC900F1E597 /* SYActivitiesSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYActivitiesSingleModel.m; sourceTree = "<group>"; };
 		9D41E8391E66656000C0D8B1 /* cqcb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cqcb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D41E83D1E66656000C0D8B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9D41E83F1E66656000C0D8B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -474,6 +495,8 @@
 		9D41E86D1E666CD300C0D8B1 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				9D0AB6D61E691EC900F1E597 /* SYActivitiesSingleModel.h */,
+				9D0AB6D71E691EC900F1E597 /* SYActivitiesSingleModel.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -481,6 +504,9 @@
 		9D41E86E1E666CD300C0D8B1 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				9D0AB6D11E691EB600F1E597 /* SYActivitiesCell.h */,
+				9D0AB6D21E691EB600F1E597 /* SYActivitiesCell.m */,
+				9D0AB6D31E691EB600F1E597 /* SYActivitiesCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -506,6 +532,9 @@
 		9D41E8711E666CDB00C0D8B1 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				9D0AB6C11E68FE7700F1E597 /* SYVRCell.h */,
+				9D0AB6C21E68FE7700F1E597 /* SYVRCell.m */,
+				9D0AB6C31E68FE7700F1E597 /* SYVRCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -522,6 +551,8 @@
 		9D41E8731E666CE200C0D8B1 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				9D0AB6C61E69131F00F1E597 /* SYDialogueSingleModel.h */,
+				9D0AB6C71E69131F00F1E597 /* SYDialogueSingleModel.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -529,6 +560,9 @@
 		9D41E8741E666CE200C0D8B1 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				9D0AB6C91E69132F00F1E597 /* SYDialogueCell.h */,
+				9D0AB6CA1E69132F00F1E597 /* SYDialogueCell.m */,
+				9D0AB6CB1E69132F00F1E597 /* SYDialogueCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -649,11 +683,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D41E84C1E66656100C0D8B1 /* LaunchScreen.storyboard in Resources */,
+				9D0AB6C51E68FE7700F1E597 /* SYVRCell.xib in Resources */,
 				9D671AC41E67E8E6009FB2E1 /* SYNewsType2Cell.xib in Resources */,
 				9D671ABF1E67C1EE009FB2E1 /* SYNewsType1Cell.xib in Resources */,
 				9D41E8491E66656100C0D8B1 /* Assets.xcassets in Resources */,
 				9D671AE21E680C8C009FB2E1 /* SYNewsType5Cell.xib in Resources */,
 				9D671AC91E67E8F2009FB2E1 /* SYNewsType3Cell.xib in Resources */,
+				9D0AB6CD1E69132F00F1E597 /* SYDialogueCell.xib in Resources */,
+				9D0AB6D51E691EB600F1E597 /* SYActivitiesCell.xib in Resources */,
 				9D671ACE1E67E8FC009FB2E1 /* SYNewsType4Cell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,6 +763,7 @@
 				9D41E8C91E669FB400C0D8B1 /* HS_Http.m in Sources */,
 				9D41E83E1E66656000C0D8B1 /* main.m in Sources */,
 				9D671AE11E680C8C009FB2E1 /* SYNewsType5Cell.m in Sources */,
+				9D0AB6CC1E69132F00F1E597 /* SYDialogueCell.m in Sources */,
 				9D41E8871E666D1A00C0D8B1 /* _JZNavigationInteractiveTransition.m in Sources */,
 				9D41E8C01E669F8800C0D8B1 /* UIButton+HSButton.m in Sources */,
 				9D41E8D31E66A81100C0D8B1 /* SYUserSingleton.m in Sources */,
@@ -734,10 +772,12 @@
 				9D41E8621E666B0F00C0D8B1 /* SYNavigationController.m in Sources */,
 				9D41E8CF1E66A02100C0D8B1 /* SYRefreshFooter.m in Sources */,
 				9D41E8A71E669F4000C0D8B1 /* Foundation+Log.m in Sources */,
+				9D0AB6D81E691EC900F1E597 /* SYActivitiesSingleModel.m in Sources */,
 				9D41E8891E666D1A00C0D8B1 /* NSNumber+JZExtension.m in Sources */,
 				9D671ABE1E67C1EE009FB2E1 /* SYNewsType1Cell.m in Sources */,
 				9D41E8651E666B3F00C0D8B1 /* SYTabBarController.m in Sources */,
 				9D41E8D91E66B80600C0D8B1 /* SYSearchVC.m in Sources */,
+				9D0AB6C81E69131F00F1E597 /* SYDialogueSingleModel.m in Sources */,
 				9D41E8881E666D1A00C0D8B1 /* _JZValue.m in Sources */,
 				9D41E8BF1E669F8800C0D8B1 /* UIBarButtonItem+HSExtension.m in Sources */,
 				9D41E8DC1E66BD1E00C0D8B1 /* SYNewsTitleBtn.m in Sources */,
@@ -758,7 +798,9 @@
 				9D671ACD1E67E8FC009FB2E1 /* SYNewsType4Cell.m in Sources */,
 				9D41E8A81E669F4000C0D8B1 /* Reachability.m in Sources */,
 				879B4D4B1E670232005950FC /* SYNewsTypeModel.m in Sources */,
+				9D0AB6C41E68FE7700F1E597 /* SYVRCell.m in Sources */,
 				9D41E88C1E666D1A00C0D8B1 /* UINavigationController+JZExtension.m in Sources */,
+				9D0AB6D41E691EB600F1E597 /* SYActivitiesCell.m in Sources */,
 				9D41E8C11E669F8800C0D8B1 /* UIImage+Image.m in Sources */,
 				9D41E8CC1E669FFA00C0D8B1 /* SYRefreshGifHeader.m in Sources */,
 				9D671AD81E67F0FA009FB2E1 /* NSDate+XMGExtension.m in Sources */,

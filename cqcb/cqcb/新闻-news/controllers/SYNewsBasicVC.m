@@ -22,7 +22,7 @@
 /**
  主表视图
  */
-@property (nonatomic, strong)UITableView *tabeleView;
+@property (nonatomic, strong)UITableView *tableView;
 
 /**
  新闻模型数组
@@ -51,24 +51,24 @@ static NSString *type4cellID = @"newSingleType4Cell";
 static NSString *type5cellID = @"newSingleType5Cell";
 
 #pragma mark - [懒加载]==========
--(UITableView *)tabeleView{
-    if (!_tabeleView) {
-        _tabeleView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.xmg_width, self.view.xmg_height) style:UITableViewStylePlain];
-        _tabeleView.delegate = self;
-        _tabeleView.dataSource = self;
-        _tabeleView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        _tabeleView.tableFooterView = [UIView new];
-        _tabeleView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
-        _tabeleView.mj_header = [SYRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadFirstData)];
-        _tabeleView.mj_footer = [SYRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-        [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType1Cell" bundle:nil] forCellReuseIdentifier:type1cellID];
-        [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType2Cell" bundle:nil] forCellReuseIdentifier:type2cellID];
-        [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType3Cell" bundle:nil] forCellReuseIdentifier:type3cellID];
-        [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType4Cell" bundle:nil] forCellReuseIdentifier:type4cellID];
-        [_tabeleView registerNib:[UINib nibWithNibName:@"SYNewsType5Cell" bundle:nil] forCellReuseIdentifier:type5cellID];
-        [self.view addSubview:_tabeleView];
+-(UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.xmg_width, self.view.xmg_height) style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        _tableView.tableFooterView = [UIView new];
+        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
+        _tableView.mj_header = [SYRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadFirstData)];
+        _tableView.mj_footer = [SYRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+        [_tableView registerNib:[UINib nibWithNibName:@"SYNewsType1Cell" bundle:nil] forCellReuseIdentifier:type1cellID];
+        [_tableView registerNib:[UINib nibWithNibName:@"SYNewsType2Cell" bundle:nil] forCellReuseIdentifier:type2cellID];
+        [_tableView registerNib:[UINib nibWithNibName:@"SYNewsType3Cell" bundle:nil] forCellReuseIdentifier:type3cellID];
+        [_tableView registerNib:[UINib nibWithNibName:@"SYNewsType4Cell" bundle:nil] forCellReuseIdentifier:type4cellID];
+        [_tableView registerNib:[UINib nibWithNibName:@"SYNewsType5Cell" bundle:nil] forCellReuseIdentifier:type5cellID];
+        [self.view addSubview:_tableView];
     }
-    return _tabeleView;
+    return _tableView;
 }
 -(NSMutableArray<SYNewsSingleModel *> *)arrayNews{
     if (!_arrayNews) {
@@ -200,17 +200,17 @@ static NSString *type5cellID = @"newSingleType5Cell";
         //结束转圈
         [self.activityIndicatorView stopAnimating];
         self.activityIndicatorView.hidden = YES;
-        [self.tabeleView reloadData];
-        [self.tabeleView.mj_footer endRefreshing];
-        [self.tabeleView.mj_header endRefreshing];
+        [self.tableView reloadData];
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_header endRefreshing];
         
     } error:^(id error) {
         //结束转圈
         [self.activityIndicatorView stopAnimating];
         self.activityIndicatorView.hidden = YES;
         
-        [self.tabeleView.mj_footer endRefreshing];
-        [self.tabeleView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_header endRefreshing];
     }];
     
     
@@ -219,7 +219,7 @@ static NSString *type5cellID = @"newSingleType5Cell";
         DLog(@"%@",responseObject);
         self.arrayAD = [SYNewsAdModel mj_objectArrayWithKeyValuesArray:responseObject[@"newslist"]];
     } error:^(id error) {
-        
+        DLog(@"%@",error);
     }];
 }
 

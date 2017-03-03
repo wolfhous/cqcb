@@ -54,12 +54,12 @@
  */
 - (void)setupChildViewControllers
 {
+    
+    [self setupOneChildViewController:[[SYNavigationController alloc]initWithRootViewController:[SYActivitiesVC new]] title:@"活动" image:@"btn_tabbar_3_22x22_" selectedImage:@"btn_tabbar_sel_3_22x22_"];
+    [self setupOneChildViewController:[[SYNavigationController alloc]initWithRootViewController:[SYDialogueVC new]] title:@"对话" image:@"btn_tabbar_2_22x22_" selectedImage:@"btn_tabbar_sel_2_22x22_"];
     [self setupOneChildViewController:[[SYNavigationController alloc]initWithRootViewController:[SYVRVC new]] title:@"视觉" image:@"btn_tabbar_1_20x20_" selectedImage:@"btn_tabbar_sel_1_20x20_"];
     [self setupOneChildViewController:[[SYNavigationController alloc]initWithRootViewController:[SYNewsVC new]] title:@"新闻" image:@"btn_tabbar_0_22x22_" selectedImage:@"btn_tabbar_sel_0_22x22_"];
-    
-    [self setupOneChildViewController:[[SYNavigationController alloc]initWithRootViewController:[SYVRVC new]] title:@"对话" image:@"btn_tabbar_2_22x22_" selectedImage:@"btn_tabbar_sel_2_22x22_"];
-    [self setupOneChildViewController:[[SYNavigationController alloc]initWithRootViewController:[SYVRVC new]] title:@"活动" image:@"btn_tabbar_3_22x22_" selectedImage:@"btn_tabbar_sel_3_22x22_"];
-    [self setupOneChildViewController:[[SYNavigationController alloc]initWithRootViewController:[SYVRVC new]] title:@"我" image:@"btn_tabbar_4_22x22_" selectedImage:@"btn_tabbar_sel_4_22x22_"];
+    [self setupOneChildViewController:[[SYNavigationController alloc]initWithRootViewController:[SYMeVC new]] title:@"我" image:@"btn_tabbar_4_22x22_" selectedImage:@"btn_tabbar_sel_4_22x22_"];
 }
 /**
  *  初始化一个子控制器
