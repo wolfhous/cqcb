@@ -14,5 +14,14 @@
 {
     return @{@"ID": @"id"};
 }
-
+-(NSString *)titlepic{
+    _titlepic = [HSManager hs_getCorrectURL:_titlepic];
+    
+    return _titlepic;
+}
+-(NSString *)titleurl{
+    _titleurl = [HSManager hs_getCorrectURL:_titleurl];
+    
+    return _titleurl;
+}
 @end

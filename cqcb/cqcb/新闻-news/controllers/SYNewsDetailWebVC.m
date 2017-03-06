@@ -7,7 +7,6 @@
 //
 
 #import "SYNewsDetailWebVC.h"
-#import "UIBarButtonItem+HSExtension.h"
 @interface SYNewsDetailWebVC ()<UIWebViewDelegate>
 @property (nonatomic,strong)UIWebView *webView;
 

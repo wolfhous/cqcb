@@ -7,39 +7,56 @@
 //
 
 #import "SYNewsBasicVC.h"
-#import "SYNewsAdModel.h"//新闻广告ad模型
-#import "SYNewsSingleModel.h"//单个新闻模型
+#import "SYNewsAdModel.h"//新闻广告ad模型   【model】
+#import "SYNewsTypeSubModel.h"//新闻广告 子类型（广告下面的按钮类型模型）【model】
+#import "SYNewsHeaderViewSubBtn.h"//新闻广告 子类型按钮 【UIButton】
+#import "SYNewsSingleModel.h"//单个新闻模型 【model】
 
-#import "SYNewsType1Cell.h"//右侧图片cell
-#import "SYNewsType2Cell.h"//三张图片类型cell
-#import "SYNewsType3Cell.h"//大图类型新闻
-#import "SYNewsType4Cell.h"//文字类型新闻
-#import "SYNewsType5Cell.h"//大图类型新闻 + 评论和阅读
+#import "SYNewsType1Cell.h"//右侧图片cell            【cell】
+#import "SYNewsType2Cell.h"//三张图片类型cell         【cell】
+#import "SYNewsType3Cell.h"//大图类型新闻             【cell】
+#import "SYNewsType4Cell.h"//文字类型新闻             【cell】
+#import "SYNewsType5Cell.h"//大图类型新闻 + 评论和阅读  【cell】
 
-#import "SYNewsDetailWebVC.h"//新闻详情--网页类型
-@interface SYNewsBasicVC ()<UITableViewDelegate,UITableViewDataSource>
+#import "SYNewsDetailWebVC.h"//新闻详情--网页类型 【VC】
+
+
+#define adHeight SCREEN_WIDTH * 9 / 21//ad高度
+#define subBtnHeight 60//子分类按钮高度
+
+@interface SYNewsBasicVC ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 
 /**
  主表视图
  */
 @property (nonatomic, strong)UITableView *tableView;
-
 /**
  新闻模型数组
  */
 @property (nonatomic, strong)NSMutableArray<SYNewsSingleModel *> *arrayNews;
 /**
+ 当前数据页码
+ */
+@property (nonatomic, assign)NSInteger pageIndex;
+/** 网络圈圈*/
+@property (nonatomic,strong)UIActivityIndicatorView *activityIndicatorView;
+
+
+/**
+ 头部视图 tableView的头部
+ */
+@property (nonatomic,strong)UIView *headerView;
+
+/**
+ headerView 里面的 广告轮播图View
+ */
+@property (nonatomic,strong)SDCycleScrollView *adView;
+/**
  广告模型数组
  */
 @property (nonatomic, strong)NSMutableArray<SYNewsAdModel *> *arrayAD;
 
-/**
- 当前数据页码
- */
-@property (nonatomic, assign)NSInteger pageIndex;
 
-/** 网络圈圈*/
-@property (nonatomic,strong)UIActivityIndicatorView *activityIndicatorView;
 @end
 
 @implementation SYNewsBasicVC
@@ -76,8 +93,6 @@ static NSString *type5cellID = @"newSingleType5Cell";
     }
     return _arrayNews;
 }
-
-
 -(NSMutableArray<SYNewsAdModel *> *)arrayAD{
     if (!_arrayAD) {
         _arrayAD = [NSMutableArray array];
@@ -99,6 +114,79 @@ static NSString *type5cellID = @"newSingleType5Cell";
     }
     return _activityIndicatorView;
 }
+-(UIView *)headerView{
+    if (!_headerView) {
+        
+        //先计算应该显示的高度
+        CGFloat headerViewHeight = 0;
+        if (self.arrayAD.count > 0 && self.model.sub.count > 0) {
+            headerViewHeight = adHeight + subBtnHeight;
+        }else if (self.arrayAD.count > 0 && self.model.sub.count < 1){
+            headerViewHeight = adHeight;
+        }else if (self.arrayAD.count < 1 && self.model.sub.count > 0){
+            headerViewHeight = subBtnHeight;
+        }else if (self.arrayAD.count < 1 && self.model.sub.count < 1){
+            headerViewHeight = 0;
+        }else{
+            headerViewHeight = 0;
+        }
+        //创建headerView视图
+        _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, headerViewHeight)];
+        _headerView.backgroundColor = [UIColor whiteColor];
+        //判断是否有ad轮播数组数据，来创建ad滚动视图
+        if (self.arrayAD.count > 0) {
+            self.adView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, adHeight) delegate:self placeholderImage:[UIImage imageNamed:HS_placeholderImageName]];
+            
+            NSMutableArray *arrayImageStr = [NSMutableArray array];
+            for (SYNewsAdModel *adModel in self.arrayAD) {
+                [arrayImageStr addObject:adModel.titlepic];
+            }
+            self.adView.imageURLStringsGroup = arrayImageStr;
+            
+            NSMutableArray *arrayTitleStr = [NSMutableArray array];
+            for (SYNewsAdModel *adModel in self.arrayAD) {
+                [arrayTitleStr addObject:adModel.title];
+            }
+            self.adView.titlesGroup = arrayTitleStr;
+    
+            self.adView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+            self.adView.currentPageDotColor = HSMainColor;
+            [_headerView addSubview:self.adView];
+        }
+        
+        //判断是否有子分类数据 来创建子分类按钮
+        if (self.model.sub.count > 0) {
+            //添加子分类按钮
+            CGFloat x = SCREEN_WIDTH / self.model.sub.count;
+            CGFloat y = self.adView == nil? 0: self.adView.xmg_bottom;
+            
+            for (NSInteger i = 0; i < self.model.sub.count; i ++) {
+                SYNewsHeaderViewSubBtn *btn = [SYNewsHeaderViewSubBtn buttonWithType:UIButtonTypeCustom];
+                [btn sd_setImageWithURL:[NSURL URLWithString:self.model.sub[i].classimg] forState:UIControlStateNormal];
+                [btn setTitle:self.model.sub[i].classname forState:UIControlStateNormal];
+                [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+                btn.frame = CGRectMake(i * x, y, x, subBtnHeight);
+                [btn addTarget:self action:@selector(clickHeaderView_subBtn:) forControlEvents:UIControlEventTouchUpInside];
+                btn.tag = i;
+                [_headerView addSubview:btn];
+            }
+            //创建分割线
+            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, headerViewHeight - 1, SCREEN_WIDTH, 0.5)];
+            lineView.backgroundColor = HSLineColor;
+            [_headerView addSubview:lineView];
+        }
+        //创建完毕
+    }
+    return _headerView;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -126,10 +214,8 @@ static NSString *type5cellID = @"newSingleType5Cell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     if (self.arrayNews[indexPath.row].showtype == cellTypeRightImage ) {//右侧有一张图片 或者 没有图片
         if (self.arrayNews[indexPath.row].smalltitlepic.length > 1) {//假如有图片，就显示图片
-            
             SYNewsType1Cell *cell = [tableView dequeueReusableCellWithIdentifier:type1cellID];
             cell.model = self.arrayNews[indexPath.row];
             return cell;
@@ -150,10 +236,8 @@ static NSString *type5cellID = @"newSingleType5Cell";
         SYNewsType5Cell *cell = [tableView dequeueReusableCellWithIdentifier:type5cellID];
         cell.model = self.arrayNews[indexPath.row];
         return cell;
-    }
-    
-    else{
-        DLog(@"未知类型新闻====%ld",self.arrayNews[indexPath.row].showtype);
+    }else{
+        DLog(@"======未知类型新闻====%ld",self.arrayNews[indexPath.row].showtype);
         SYNewsType1Cell *cell = [tableView dequeueReusableCellWithIdentifier:type1cellID];
         cell.model = self.arrayNews[indexPath.row];
         return cell;
@@ -183,8 +267,6 @@ static NSString *type5cellID = @"newSingleType5Cell";
 
 #pragma mark - <加载数据>========
 -(void)loadData{
-    
-    
     //新闻列表数据
     [HS_Http hs_postAPIName:api_newsList(self.model.classpath,self.pageIndex) parameters:nil succes:^(id responseObject) {
         
@@ -216,11 +298,44 @@ static NSString *type5cellID = @"newSingleType5Cell";
     
     //新闻广告数据
     [HS_Http hs_postAPIName:api_newsAD(self.model.classid) parameters:nil succes:^(id responseObject) {
-        DLog(@"%@",responseObject);
         self.arrayAD = [SYNewsAdModel mj_objectArrayWithKeyValuesArray:responseObject[@"newslist"]];
+        if (self.arrayAD.count > 0) {
+            [self setupTableHeaderView];
+        }else{
+            DLog(@"%@===无广告轮播图",self.model.classname);
+            if (self.model.sub.count > 0) {
+                [self setupTableHeaderView];//单纯设置子类别
+            }
+        }
     } error:^(id error) {
         DLog(@"%@",error);
     }];
 }
+
+-(void)setupTableHeaderView{
+    self.tableView.tableHeaderView = self.headerView;
+}
+
+#pragma mark - 点击ad图片回调
+/** 点击ad图片回调 */
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    SYNewsDetailWebVC *vc = [SYNewsDetailWebVC new];
+    vc.urlStr = self.arrayAD[index].titleurl;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+#pragma mark - 点击子分类按钮
+-(void)clickHeaderView_subBtn:(SYNewsHeaderViewSubBtn *)btn{
+    DLog(@"%@",btn.currentTitle);
+    SYNewsDetailWebVC *vc = [SYNewsDetailWebVC new];
+    vc.urlStr = self.model.sub[btn.tag].classpath;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+
+
+
+
+
 
 @end

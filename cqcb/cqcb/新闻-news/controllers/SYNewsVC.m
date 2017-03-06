@@ -106,6 +106,7 @@
     
     [HS_Http hs_postAPIName:api_newsTypes parameters:nil succes:^(id responseObject) {
         
+        
         self.arrayNewsTypes = [SYNewsTypeModel mj_objectArrayWithKeyValuesArray:responseObject];
         /***  设置新闻分类栏目 ****/
         [self setupSYXWCatogaryTitleScrollView];

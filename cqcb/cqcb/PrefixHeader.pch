@@ -20,8 +20,10 @@
 #import "MJExtension.h"//模型解析
 #import "Masonry.h"//自动布局
 #import "UIImageView+WebCache.h"//图片缓存
+#import "UIButton+WebCache.h"//按钮图片缓存
 #import "JZNavigationExtension.h"//三方库 导航栏渐变效果
 #import "MBProgressHUD.h"//提示进度条
+#import "SDCycleScrollView.h"//滚动视图
 //======三方库 封装=======
 #import "HS_Http.h"//封装网络请求
 #import "SYRefreshGifHeader.h"//自定义下拉刷新

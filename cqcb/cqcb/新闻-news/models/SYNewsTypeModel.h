@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SYNewsTypeSubModel.h"// 子分类模型
 @interface SYNewsTypeModel : NSObject
 
 /**
@@ -36,9 +37,9 @@
 @property (nonatomic, copy) NSString *subscribetag;
 
 /**
- 子分类-字典
+ 子分类-数组
  */
-@property (nonatomic, copy) NSDictionary *sub;
+@property (nonatomic, copy) NSArray<SYNewsTypeSubModel *> *sub;
 
 
 @end

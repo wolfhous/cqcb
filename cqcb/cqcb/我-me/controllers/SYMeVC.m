@@ -7,7 +7,6 @@
 //
 
 #import "SYMeVC.h"
-#import "UIBarButtonItem+HSExtension.h"
 #define headerViewH 100
 
 @interface SYMeVC ()<UITableViewDelegate,UITableViewDataSource>

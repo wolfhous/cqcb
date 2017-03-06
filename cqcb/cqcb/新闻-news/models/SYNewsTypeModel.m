@@ -10,4 +10,11 @@
 
 @implementation SYNewsTypeModel
 
+
+/* 实现该方法，说明数组中存储的模型数据类型 */
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"sub" : @"SYNewsTypeSubModel"};
+}
+
+
 @end
