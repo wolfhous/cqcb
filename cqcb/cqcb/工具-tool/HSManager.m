@@ -216,4 +216,44 @@ static CGRect originalFrame;
     }
     return url;
 }
+//编码
++(void)hs_encodeArchiver_obj:(id)obj path:(NSString *)pathStr encodeKey:(NSString *)key{
+    if (pathStr == nil) {
+        pathStr = @"hs_archiving";
+    }
+    //Documents/archiving
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *archivingPath = [documentsPath stringByAppendingPathComponent:pathStr];
+    DLog(@"归档路径 = %@",archivingPath);
+    //1.可变数据
+    NSMutableData *data = [NSMutableData data];
+    //2.归档对象
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    //3.编码
+    [archiver encodeObject:obj forKey:key];
+    //4.完成编码
+    [archiver finishEncoding];
+    //5.写入文件
+    [data writeToFile:archivingPath atomically:YES];
+
+}
+//解码
++(id)hs_decodeArchiver_path:(NSString *)pathStr decodeKey:(NSString *)key{
+    if (pathStr == nil) {
+        pathStr = @"hs_archiving";
+    }
+    //Documents/archiving
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *archivingPath = [documentsPath stringByAppendingPathComponent:pathStr];
+    //1.读取数据
+    NSData *readingData = [NSData dataWithContentsOfFile:archivingPath];
+    //2.解档对象
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:readingData];
+    //3.解码
+    id obj = [unarchiver decodeObjectForKey:key];
+    //4.完成解码
+    [unarchiver finishDecoding];
+    
+    return obj;
+}
 @end

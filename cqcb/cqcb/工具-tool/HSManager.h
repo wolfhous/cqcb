@@ -74,4 +74,25 @@
 +(NSString *)hs_getCorrectURL:(NSString *)url;
 
 
+
+
+
+/**
+ 编码
+
+ @param obj 编码对象
+ @param pathStr 编码路径 可传nil
+ @param key 编码对应存储的key值 建议为api接口宏地址
+ */
++(void)hs_encodeArchiver_obj:(id)obj path:(NSString *)pathStr encodeKey:(NSString *)key;
+
+/**
+ 解码
+
+ @param pathStr 解码路径 可传nil
+ @param key 解码对应存储的key值 建议为api接口宏地址
+ */
++(id)hs_decodeArchiver_path:(NSString *)pathStr decodeKey:(NSString *)key;
+
+
 @end

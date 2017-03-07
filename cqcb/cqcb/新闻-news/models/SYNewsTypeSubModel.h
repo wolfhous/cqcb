@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SYNewsTypeSubModel : NSObject
+@interface SYNewsTypeSubModel : NSObject<NSCoding>
 /**
  新闻广告 类型id
  */

@@ -110,7 +110,7 @@
         cell.textLabel.font = [UIFont systemFontOfSize:14.0];
     }
     
-    if ([self.arrayTitles[indexPath.section][indexPath.row][@"title"] isEqualToString:@"当前版本"]) {
+    if ([self.arrayTitles[indexPath.section][indexPath.row][@"title"] hasPrefix:@"当前版本"]) {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }else{
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

@@ -21,7 +21,7 @@
 #import "SYNewsDetailWebVC.h"//新闻详情--网页类型 【VC】
 
 
-#define adHeight SCREEN_WIDTH * 9 / 21//ad高度
+#define adHeight SCREEN_WIDTH * 9 / 19//ad高度
 #define subBtnHeight 60//子分类按钮高度
 
 @interface SYNewsBasicVC ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
@@ -285,6 +285,9 @@ static NSString *type5cellID = @"newSingleType5Cell";
         [self.tableView reloadData];
         [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];
+        //归档
+        [HSManager hs_encodeArchiver_obj:self.arrayNews path:[NSString stringWithFormat:@"api_newsList%@",self.model.classid] encodeKey:[NSString stringWithFormat:@"api_newsList%@",self.model.classid]];
+        
         
     } error:^(id error) {
         //结束转圈
@@ -293,6 +296,17 @@ static NSString *type5cellID = @"newSingleType5Cell";
         
         [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];
+        
+        //没有网络 解码
+        if (![HSManager hs_isExistenceNetwork]) {
+            //解码操作
+            self.arrayNews = (NSMutableArray *)[HSManager hs_decodeArchiver_path:[NSString stringWithFormat:@"api_newsList%@",self.model.classid] decodeKey:[NSString stringWithFormat:@"api_newsList%@",self.model.classid]];
+            if (self.arrayNews.count >0) {
+                [self.tableView reloadData];
+            }
+        }
+
+        
     }];
     
     
@@ -307,8 +321,21 @@ static NSString *type5cellID = @"newSingleType5Cell";
                 [self setupTableHeaderView];//单纯设置子类别
             }
         }
+        //归档
+        [HSManager hs_encodeArchiver_obj:self.arrayAD path:[NSString stringWithFormat:@"api_newsAD%@",self.model.classid] encodeKey:[NSString stringWithFormat:@"api_newsAD%@",self.model.classid]];
+        
+        
+        
     } error:^(id error) {
         DLog(@"%@",error);
+        //没有网络 解码
+        if (![HSManager hs_isExistenceNetwork]) {
+            //解码操作
+            self.arrayAD = (NSMutableArray *)[HSManager hs_decodeArchiver_path:[NSString stringWithFormat:@"api_newsAD%@",self.model.classid] decodeKey:[NSString stringWithFormat:@"api_newsAD%@",self.model.classid]];
+            if (self.arrayAD.count >0) {
+                [self setupTableHeaderView];
+            }
+        }
     }];
 }
 

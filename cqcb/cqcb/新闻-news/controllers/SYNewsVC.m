@@ -97,6 +97,9 @@
     
     
     
+    
+    
+    
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, (SCREEN_HEIGHT - 30)/2, SCREEN_WIDTH, 30)];
     [btn setTitle:@"网络连接失败，点击再来一次吧" forState:0];
     [btn setTitleColor:HSMainColor forState:UIControlStateNormal];
@@ -105,24 +108,44 @@
     [self.view addSubview:btn];
     
     [HS_Http hs_postAPIName:api_newsTypes parameters:nil succes:^(id responseObject) {
-        
-        
+        //解析数据
         self.arrayNewsTypes = [SYNewsTypeModel mj_objectArrayWithKeyValuesArray:responseObject];
-        /***  设置新闻分类栏目 ****/
-        [self setupSYXWCatogaryTitleScrollView];
-        /***  设置基础滚动视图 ****/
-        [self setupBasicScrollView];
-        /***  添加子控制器 ****/
-        [self addChildVcInScrollView];
-        
+        //隐藏按钮
         btn.hidden = YES;
         [btn removeFromSuperview];
-        
+        //布局其他子控件
+        [self isLoadDataSuccess];
+        //持久化数据 编码
+        [HSManager hs_encodeArchiver_obj:self.arrayNewsTypes path:nil encodeKey:@"api_newsTypes"];
     } error:^(id error) {
         btn.hidden = NO;
+        //没有网络 解码
+        if (![HSManager hs_isExistenceNetwork]) {
+            //解码操作
+            self.arrayNewsTypes = (NSMutableArray *)[HSManager hs_decodeArchiver_path:nil decodeKey:@"api_newsTypes"];
+            if (self.arrayNewsTypes.count >0) {
+                //有数据 隐藏按钮
+                btn.hidden = YES;
+                [btn removeFromSuperview];
+                //布局其他子控件
+                [self isLoadDataSuccess];
+            }
+        }
+
     }];
-  
 }
+//布局其他子控件
+-(void)isLoadDataSuccess{
+    /***  设置新闻分类栏目 ****/
+    [self setupSYXWCatogaryTitleScrollView];
+    /***  设置基础滚动视图 ****/
+    [self setupBasicScrollView];
+    /***  添加子控制器 ****/
+    [self addChildVcInScrollView];
+}
+
+
+
 
 #pragma mark [设置新闻分类栏目]
 -(void)setupSYXWCatogaryTitleScrollView{

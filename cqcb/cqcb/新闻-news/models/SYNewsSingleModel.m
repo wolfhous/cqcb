@@ -55,5 +55,65 @@ static NSCalendar *calendar_;
     }
 
 }
-
+#pragma mark - NSCoding
+//对属性进行编码(时机:控制器执行encodeObject方法)
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeInteger:self.showtype forKey:@"showtype"];
+    [aCoder encodeObject:self.istop forKey:@"istop"];
+    [aCoder encodeObject:self.newstime forKey:@"newstime"];
+    [aCoder encodeObject:self.title forKey:@"title"];
+    [aCoder encodeObject:self.asdfg forKey:@"asdfg"];
+    [aCoder encodeObject:self.videourl forKey:@"videourl"];
+    [aCoder encodeObject:self.sptime forKey:@"sptime"];
+    [aCoder encodeObject:self.smalltitlepic forKey:@"smalltitlepic"];
+    [aCoder encodeObject:self.titlepic forKey:@"titlepic"];
+    [aCoder encodeObject:self.smalltitlepic3 forKey:@"smalltitlepic3"];
+    [aCoder encodeObject:self.smalltext forKey:@"smalltext"];
+    [aCoder encodeObject:self.expertheadimgurl forKey:@"expertheadimgurl"];
+    [aCoder encodeObject:self.video forKey:@"video"];
+    [aCoder encodeObject:self.imgnum forKey:@"imgnum"];
+    [aCoder encodeObject:self.titleurl forKey:@"titleurl"];
+    [aCoder encodeObject:self.onclick forKey:@"onclick"];
+    [aCoder encodeObject:self.ID forKey:@"ID"];
+    [aCoder encodeObject:self.classid forKey:@"classid"];
+    [aCoder encodeObject:self.isurl forKey:@"isurl"];
+    [aCoder encodeObject:self.titletype forKey:@"titletype"];
+    [aCoder encodeObject:self.writer forKey:@"writer"];
+    [aCoder encodeObject:self.plnum forKey:@"plnum"];
+    [aCoder encodeObject:self.befrom forKey:@"befrom"];
+    [aCoder encodeObject:self.expertname forKey:@"expertname"];
+    [aCoder encodeFloat:self.cellHeight forKey:@"cellHeight"];
+}
+//对属性进行解码(时机:控制器执行decodeObject方法)
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if (self) {
+        self.showtype = [aDecoder decodeIntegerForKey:@"showtype"];
+        self.istop = [aDecoder decodeObjectForKey:@"istop"];
+        self.newstime = [aDecoder decodeObjectForKey:@"newstime"];
+        self.title = [aDecoder decodeObjectForKey:@"title"];
+        self.asdfg = [aDecoder decodeObjectForKey:@"asdfg"];
+        self.videourl = [aDecoder decodeObjectForKey:@"videourl"];
+        self.sptime = [aDecoder decodeObjectForKey:@"sptime"];
+        self.smalltitlepic = [aDecoder decodeObjectForKey:@"smalltitlepic"];
+        self.titlepic = [aDecoder decodeObjectForKey:@"titlepic"];
+        self.smalltitlepic3 = [aDecoder decodeObjectForKey:@"smalltitlepic3"];
+        self.smalltext = [aDecoder decodeObjectForKey:@"smalltext"];
+        self.expertheadimgurl = [aDecoder decodeObjectForKey:@"expertheadimgurl"];
+        self.video = [aDecoder decodeObjectForKey:@"video"];
+        self.imgnum = [aDecoder decodeObjectForKey:@"imgnum"];
+        self.titleurl = [aDecoder decodeObjectForKey:@"titleurl"];
+        self.onclick = [aDecoder decodeObjectForKey:@"onclick"];
+        self.ID = [aDecoder decodeObjectForKey:@"ID"];
+        self.classid = [aDecoder decodeObjectForKey:@"classid"];
+        self.isurl = [aDecoder decodeObjectForKey:@"isurl"];
+        self.titletype = [aDecoder decodeObjectForKey:@"titletype"];
+        self.writer = [aDecoder decodeObjectForKey:@"writer"];
+        self.plnum = [aDecoder decodeObjectForKey:@"plnum"];
+        self.befrom = [aDecoder decodeObjectForKey:@"befrom"];
+        self.expertname = [aDecoder decodeObjectForKey:@"expertname"];
+        self.cellHeight = [aDecoder decodeFloatForKey:@"cellHeight"];
+    }
+    return self;
+}
 @end
