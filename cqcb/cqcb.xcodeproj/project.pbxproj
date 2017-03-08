@@ -72,6 +72,7 @@
 		9D671ADC1E67FF64009FB2E1 /* SYNewsDetailWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D671ADA1E67FF64009FB2E1 /* SYNewsDetailWebVC.m */; };
 		9D671AE11E680C8C009FB2E1 /* SYNewsType5Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D671ADF1E680C8C009FB2E1 /* SYNewsType5Cell.m */; };
 		9D671AE21E680C8C009FB2E1 /* SYNewsType5Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D671AE01E680C8C009FB2E1 /* SYNewsType5Cell.xib */; };
+		9D78DEA61E6FAD2B0052A8C5 /* SYMeHeaderViewBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D78DEA51E6FAD2B0052A8C5 /* SYMeHeaderViewBtn.m */; };
 		9D9836A41E6D26EF0093B981 /* SYNewsTypeSubModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9836A31E6D26EF0093B981 /* SYNewsTypeSubModel.m */; };
 		9D9836A71E6D39EF0093B981 /* SYNewsHeaderViewSubBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9836A61E6D39EF0093B981 /* SYNewsHeaderViewSubBtn.m */; };
 		C3312F67222ED4DD06B823AB /* libPods-cqcb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9540326791C182174AE6CE /* libPods-cqcb.a */; };
@@ -203,6 +204,8 @@
 		9D671ADE1E680C8C009FB2E1 /* SYNewsType5Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewsType5Cell.h; sourceTree = "<group>"; };
 		9D671ADF1E680C8C009FB2E1 /* SYNewsType5Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsType5Cell.m; sourceTree = "<group>"; };
 		9D671AE01E680C8C009FB2E1 /* SYNewsType5Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYNewsType5Cell.xib; sourceTree = "<group>"; };
+		9D78DEA41E6FAD2B0052A8C5 /* SYMeHeaderViewBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMeHeaderViewBtn.h; sourceTree = "<group>"; };
+		9D78DEA51E6FAD2B0052A8C5 /* SYMeHeaderViewBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMeHeaderViewBtn.m; sourceTree = "<group>"; };
 		9D9836A21E6D26EF0093B981 /* SYNewsTypeSubModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewsTypeSubModel.h; sourceTree = "<group>"; };
 		9D9836A31E6D26EF0093B981 /* SYNewsTypeSubModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYNewsTypeSubModel.m; sourceTree = "<group>"; };
 		9D9836A51E6D39EF0093B981 /* SYNewsHeaderViewSubBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYNewsHeaderViewSubBtn.h; sourceTree = "<group>"; };
@@ -492,6 +495,8 @@
 		9D41E86B1E666CCA00C0D8B1 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				9D78DEA41E6FAD2B0052A8C5 /* SYMeHeaderViewBtn.h */,
+				9D78DEA51E6FAD2B0052A8C5 /* SYMeHeaderViewBtn.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -778,6 +783,7 @@
 				9D41E83E1E66656000C0D8B1 /* main.m in Sources */,
 				9D671AE11E680C8C009FB2E1 /* SYNewsType5Cell.m in Sources */,
 				9D0AB6CC1E69132F00F1E597 /* SYDialogueCell.m in Sources */,
+				9D78DEA61E6FAD2B0052A8C5 /* SYMeHeaderViewBtn.m in Sources */,
 				9D41E8871E666D1A00C0D8B1 /* _JZNavigationInteractiveTransition.m in Sources */,
 				9D41E8C01E669F8800C0D8B1 /* UIButton+HSButton.m in Sources */,
 				9D41E8D31E66A81100C0D8B1 /* SYUserSingleton.m in Sources */,

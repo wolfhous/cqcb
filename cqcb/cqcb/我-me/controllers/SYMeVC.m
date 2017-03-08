@@ -7,7 +7,8 @@
 //
 
 #import "SYMeVC.h"
-#define headerViewH 100
+#import "SYMeHeaderViewBtn.h"
+#define headerViewH 200
 
 @interface SYMeVC ()<UITableViewDelegate,UITableViewDataSource>
 /**
@@ -20,9 +21,14 @@
  */
 @property (nonatomic, strong) UIView *headerView;
 /**
- 标题数组
+ cell标题数组
  */
 @property (nonatomic, strong) NSMutableArray *arrayTitles;
+
+/**
+ 头部视图按钮数组
+ */
+@property (nonatomic, strong) NSMutableArray *arrayHeaderViewTitles;
 
 
 
@@ -48,7 +54,7 @@
     if (!_headerView) {
         _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, headerViewH)];
         
-        
+        //添加图片背景
         UIImageView *imageView = [[UIImageView alloc]init];
         imageView.layer.masksToBounds = YES;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -58,6 +64,30 @@
             make.edges.mas_equalTo(0);
         }];
         
+        //添加按钮
+        CGFloat w = SCREEN_WIDTH / self.arrayHeaderViewTitles.count;
+        CGFloat h = w * 0.75;
+        UIView *btnBgView = [[UIView alloc]init];
+        btnBgView.backgroundColor = HSLineColor;
+        [_headerView addSubview:btnBgView];
+        [btnBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.right.mas_equalTo(0);
+            make.height.mas_equalTo(h);
+        }];
+        for (NSInteger i = 0; i < self.arrayHeaderViewTitles.count; i ++) {
+            SYMeHeaderViewBtn *btn = [SYMeHeaderViewBtn buttonWithType:0];
+            [btn setTitle:self.arrayHeaderViewTitles[i][@"title"] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:self.arrayHeaderViewTitles[i][@"imageName"]] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            [btn setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+            [btn addTarget:self action:@selector(clickHederViewBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [btnBgView addSubview:btn];
+            [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(i * (w +1));
+                make.bottom.top.mas_equalTo(0);
+                make.width.mas_equalTo(w);
+            }];
+        }
     }
     return _headerView;
 }
@@ -80,7 +110,16 @@
     return _arrayTitles;
 }
 
-
+-(NSMutableArray *)arrayHeaderViewTitles{
+    if (!_arrayHeaderViewTitles) {
+        _arrayHeaderViewTitles = [NSMutableArray array];
+        NSMutableDictionary *dic00 = [NSMutableDictionary dictionaryWithDictionary:@{@"title":@"我的收藏",@"imageName":@"btn_my_favorite_black_35x35_"}];
+        NSMutableDictionary *dic01 = [NSMutableDictionary dictionaryWithDictionary:@{@"title":@"我的积分",@"imageName":@"btn_my_jifen_black_35x35_"}];
+        NSMutableDictionary *dic02 = [NSMutableDictionary dictionaryWithDictionary:@{@"title":@"我的消息",@"imageName":@"btn_my_message_black_35x35_"}];
+        [_arrayHeaderViewTitles addObjectsFromArray:@[dic00,dic01,dic02]];
+    }
+    return _arrayHeaderViewTitles;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -93,6 +132,12 @@
 -(void)clickMeVcRightItem{
     DLogFunc
 }
+
+-(void)clickHederViewBtn:(SYMeHeaderViewBtn *)btn{
+    DLog(@"%@",btn.currentTitle);
+}
+
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.arrayTitles.count;
