@@ -20,6 +20,16 @@
  头部视图
  */
 @property (nonatomic, strong) UIView *headerView;
+
+
+/** 积分等级说明*/
+@property (nonatomic,strong) UILabel *scoreLabel;
+/** 用户名*/
+@property (nonatomic,strong) UILabel *userNameLabel;
+/** 头像按钮*/
+@property (nonatomic,strong) UIButton *userPhotoBtn;
+
+
 /**
  cell标题数组
  */
@@ -88,6 +98,43 @@
                 make.width.mas_equalTo(w);
             }];
         }
+        
+        //添加积分
+        UILabel *scoreLabel = [[UILabel alloc]init];
+        scoreLabel.textAlignment = NSTextAlignmentCenter;
+        scoreLabel.font = [UIFont systemFontOfSize:15.0];
+        scoreLabel.text = @"积分";
+        self.scoreLabel = scoreLabel;
+        [_headerView addSubview:scoreLabel];
+        [scoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.mas_equalTo(0);
+            make.bottom.mas_equalTo(btnBgView.mas_top).mas_equalTo(-5);
+            make.height.mas_equalTo(20);
+        }];
+        //添加用户名
+        UILabel *userNameLabel = [[UILabel alloc]init];
+        userNameLabel.textAlignment = NSTextAlignmentCenter;
+        userNameLabel.font = [UIFont systemFontOfSize:15.0];
+        userNameLabel.text = @"用户名";
+        self.userNameLabel = userNameLabel;
+        [_headerView addSubview:userNameLabel];
+        [userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.mas_equalTo(0);
+            make.bottom.mas_equalTo(scoreLabel.mas_top).mas_equalTo(-5);
+            make.height.mas_equalTo(20);
+        }];
+        //添加头像和用户名
+        UIButton *userPhotoBtn = [[UIButton alloc]init];
+        [userPhotoBtn setImage:[UIImage imageNamed:HS_placeholderImageName] forState:UIControlStateNormal];
+        self.userPhotoBtn = userPhotoBtn;
+        [_headerView addSubview:userPhotoBtn];
+        [userPhotoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(70);
+            make.centerX.mas_equalTo(0);
+            make.bottom.mas_equalTo(userNameLabel.mas_top).mas_equalTo(-5);
+        }];
+
+        
     }
     return _headerView;
 }
@@ -174,6 +221,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGPoint point = scrollView.contentOffset;
+    DLog(@"%f",point.y)
     if (point.y < -headerViewH) {
         self.headerView.xmg_y = point.y;
         self.headerView.xmg_height = -point.y;
