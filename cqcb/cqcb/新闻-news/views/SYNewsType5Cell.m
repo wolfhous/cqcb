@@ -9,6 +9,8 @@
 #import "SYNewsType5Cell.h"
 #import "UILabel+HSLabel.h"
 #import "UIButton+HSButton.h"
+#import <AVFoundation/AVFoundation.h>
+
 @interface SYNewsType5Cell()
 
 /**
@@ -52,6 +54,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewSmall;
 
 
+@property (nonatomic,strong)AVPlayer *player;
 @end
 
 
@@ -68,6 +71,7 @@
     [self.imgNumBtn hs_setRoundRadius:self.imgNumBtn.xmg_height/2];
     [self.titleTypeLabel hs_setRoundRadius:4 borderWidth:0.5 borderColor:HSMainColor bgColor:[UIColor whiteColor] textColor:HSMainColor fontSize:12];
     
+    
 }
 
 -(void)setModel:(SYNewsSingleModel *)model{
@@ -79,15 +83,24 @@
     self.readNumLabel.text = [NSString stringWithFormat:@"%@ 阅读",model.asdfg];
     [self.imageViewBig sd_setImageWithURL:[NSURL URLWithString:model.titlepic] placeholderImage:[UIImage imageNamed:HS_placeholderImageName]];
     self.timeLabel.text = model.newstime;
-    //判断是否显示 图片数量 等
     
+    //判断是否显示 图片数量 等
     if (model.imgnum.integerValue > 1) {
         self.imgNumBtn.hidden = NO;
         self.imageViewSmall.hidden = NO;
+        self.imageViewSmall.image = [UIImage imageNamed:@"btn_images_big_50x50_"];
         [self.imgNumBtn setTitle:[NSString stringWithFormat:@"%@图",model.imgnum] forState:UIControlStateNormal];
     }else{
         self.imgNumBtn.hidden = YES;
         self.imageViewSmall.hidden = YES;
+    }
+    
+    //如果是视频类型
+    if ([model.video isEqualToString:@"1"] && model.videourl != nil) {
+        self.imgNumBtn.hidden = NO;
+        self.imageViewSmall.hidden = NO;
+        self.imageViewSmall.image = [UIImage imageNamed:@"btn_video_play_big_50x50_"];
+        [self.imgNumBtn setTitle:@"播放" forState:UIControlStateNormal];
     }
     
     
@@ -103,7 +116,30 @@
     //强制布局
     [self layoutIfNeeded];
     _model.cellHeight = CGRectGetMaxY(self.readNumLabel.frame) + 10;
+    
+    self.player = nil;
 }
+
+-(AVPlayer *)player{
+    if (_player == nil) {
+        AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:self.model.videourl]];
+        _player = [AVPlayer playerWithPlayerItem:item];
+        AVPlayerLayer *playerlayer = [AVPlayerLayer playerLayerWithPlayer:_player];
+        playerlayer.frame = CGRectMake(0, 0, self.imageViewBig.xmg_width, self.imageViewBig.xmg_height);
+        playerlayer.videoGravity = AVLayerVideoGravityResizeAspect;
+        [self.imageViewBig.layer addSublayer:playerlayer];
+    }
+    return _player;
+}
+- (IBAction)clickBFbtn:(id)sender {
+    [self.player play];
+    self.imgNumBtn.hidden = YES;
+    self.imageViewSmall.hidden = YES;
+}
+
+
+
+
 
 
 @end

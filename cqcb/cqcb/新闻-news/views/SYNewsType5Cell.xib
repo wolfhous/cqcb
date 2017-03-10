@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="208"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="208"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="207"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zzr-4M-UZ3">
@@ -66,6 +66,9 @@
                         <state key="normal" title="5图">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="clickBFbtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bre-sI-elr"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
